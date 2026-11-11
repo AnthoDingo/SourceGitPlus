@@ -27,11 +27,26 @@ jobs:
           VERSION: ${{ inputs.version }}
           RUNTIME: ${{ matrix.runtime }}
         run: ./build/scripts/package.win.ps1
+      - name: Build installer
+        shell: pwsh
+        env:
+          VERSION: ${{ inputs.version }}
+          RUNTIME: ${{ matrix.runtime }}
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) {
+            choco install innosetup --no-progress -y
+            if ($LASTEXITCODE) { throw 'Inno Setup installation failed' }
+          }
+          & $iscc "/DAppVersion=$env:VERSION" "/DRuntime=$env:RUNTIME" "/DSourceDir=$PWD\build\SourceGitPlus" "/DOutDir=$PWD\build" build\windows\SourceGitPlus.iss
+          if ($LASTEXITCODE) { throw 'ISCC failed' }
       - name: Upload package artifact
         uses: actions/upload-artifact@v7
         with:
           name: package.${{ matrix.runtime }}
-          path: build/sourcegitplus_*.zip
+          path: |
+            build/sourcegitplus_*.zip
+            build/SourceGitPlus-*-setup.exe
       - name: Delete temp artifacts
         uses: geekyeggo/delete-artifact@v6
         with:

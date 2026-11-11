@@ -16,11 +16,14 @@
 AppId={{B7C1F7E4-3D2A-4C55-9A53-5F0B6E1D7A11}
 AppName=SourceGitPlus
 AppVersion={#AppVersion}
-AppPublisher=sourcegit-scm
-AppPublisherURL=https://github.com/sourcegit-scm/sourcegit
+AppPublisher=AnthoDingo
+AppPublisherURL=https://github.com/AnthoDingo/SourceGitPlus
+AppSupportURL=https://github.com/AnthoDingo/SourceGitPlus/issues
+AppUpdatesURL=https://github.com/AnthoDingo/SourceGitPlus/releases
 DefaultDirName={autopf}\SourceGitPlus
 DefaultGroupName=SourceGitPlus
 UninstallDisplayIcon={app}\SourceGitPlus.exe
+UninstallDisplayName=SourceGitPlus {#AppVersion}
 OutputDir={#OutDir}
 OutputBaseFilename=SourceGitPlus-{#AppVersion}-{#Runtime}-setup
 LicenseFile=..\..\LICENSE
@@ -31,6 +34,12 @@ WizardStyle=modern
 ; per-user by default, the user can choose "for all users" in the dialog
 PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
+; Updates: the same AppId installs over the previous version, in place. A running
+; instance is closed first (the user is asked), and is not restarted automatically.
+CloseApplications=yes
+CloseApplicationsFilter=SourceGitPlus.exe
+RestartApplications=no
+SetupLogging=yes
 #if Runtime == "win-arm64"
 ArchitecturesAllowed=arm64
 ArchitecturesInstallIn64BitMode=arm64
