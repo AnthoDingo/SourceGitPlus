@@ -1,6 +1,12 @@
 name: Build
 on:
   workflow_call:
+    inputs:
+      version:
+        description: Version to build. Overrides the VERSION file when set (release tags).
+        required: false
+        type: string
+        default: ''
 jobs:
   build:
     strategy:
@@ -61,6 +67,12 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y llvm gcc-aarch64-linux-gnu
+      - name: Set version from tag
+        if: inputs.version != ''
+        shell: bash
+        env:
+          VERSION: ${{ inputs.version }}
+        run: printf '%s' "$VERSION" > VERSION
       - name: Build
         run: dotnet build -c Release
       - name: Publish

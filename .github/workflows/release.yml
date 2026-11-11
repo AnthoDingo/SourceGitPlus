@@ -6,7 +6,10 @@ on:
 jobs:
   build:
     name: Build
+    needs: version
     uses: ./.github/workflows/build.yml
+    with:
+      version: ${{ needs.version.outputs.version }}
   version:
     name: Prepare version string
     runs-on: ubuntu-latest
