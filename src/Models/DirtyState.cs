@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     [Flags]
     public enum DirtyState

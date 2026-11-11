@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public static class NumericSort
     {

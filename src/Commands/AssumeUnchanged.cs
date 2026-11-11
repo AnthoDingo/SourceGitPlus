@@ -1,4 +1,4 @@
-﻿namespace SourceGit.Commands
+﻿namespace SourceGitPlus.Commands
 {
     public class AssumeUnchanged : Command
     {

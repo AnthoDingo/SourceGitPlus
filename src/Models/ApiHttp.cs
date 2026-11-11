@@ -6,7 +6,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     // Shared HTTP plumbing for the git hosting providers (authenticated GET, JSON).
     public static class ApiHttp
@@ -74,7 +74,7 @@ namespace SourceGit.Models
         private static HttpClient CreateClient()
         {
             HttpClient client = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
-            client.DefaultRequestHeaders.UserAgent.ParseAdd("SourceGit");
+            client.DefaultRequestHeaders.UserAgent.ParseAdd("SourceGitPlus");
             return client;
         }
     }

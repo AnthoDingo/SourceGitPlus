@@ -8,7 +8,7 @@ using Avalonia.Collections;
 using Avalonia.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class Accounts : ObservableObject
     {
@@ -35,6 +35,36 @@ namespace SourceGit.ViewModels
             Watch(account);
             Items.Add(account);
             Selected = account;
+            Save();
+            _ = account.RefreshAsync();
+        }
+
+        // Logging in again to an existing account replaces its entry (the auth type is fixed per entry).
+        public void AddOrReplace(Account account)
+        {
+            Account old = null;
+            foreach (Account item in Items)
+            {
+                if (item.Provider == account.Provider && item.Url == account.Url &&
+                    string.Equals(item.Username, account.Username, StringComparison.OrdinalIgnoreCase))
+                {
+                    old = item;
+                    break;
+                }
+            }
+
+            if (old == null)
+            {
+                Add(account);
+                return;
+            }
+
+            account.EnableNotifications = old.EnableNotifications;
+            old.PropertyChanged -= OnAccountPropertyChanged;
+            Items[Items.IndexOf(old)] = account;
+            Watch(account);
+            if (Selected == old)
+                Selected = account;
             Save();
             _ = account.RefreshAsync();
         }

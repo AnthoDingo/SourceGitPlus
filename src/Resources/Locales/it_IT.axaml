@@ -1,13 +1,14 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ResourceDictionary.MergedDictionaries>
-    <ResourceInclude Source="avares://SourceGit/Resources/Locales/en_US.axaml"/>
+    <ResourceInclude Source="avares://SourceGitPlus/Resources/Locales/en_US.axaml"/>
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">Informazioni</x:String>
-  <x:String x:Key="Text.About.Menu" xml:space="preserve">Informazioni su SourceGit</x:String>
+  <x:String x:Key="Text.About.Menu" xml:space="preserve">Informazioni su SourceGitPlus</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">Data di Rilascio: {0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">Note di Rilascio</x:String>
   <x:String x:Key="Text.About.SubTitle" xml:space="preserve">Client GUI Git open source e gratuito</x:String>
+  <x:String x:Key="Text.About.ForkOf" xml:space="preserve">Fork of SourceGit</x:String>
   <x:String x:Key="Text.AddToIgnore" xml:space="preserve">Aggiungi file a Ignora</x:String>
   <x:String x:Key="Text.AddToIgnore.Pattern" xml:space="preserve">Pattern:</x:String>
   <x:String x:Key="Text.AddToIgnore.Storage" xml:space="preserve">File di storage:</x:String>
@@ -20,7 +21,7 @@
   <x:String x:Key="Text.AIAssistant.Model" xml:space="preserve">Modello</x:String>
   <x:String x:Key="Text.AIAssistant.Regen" xml:space="preserve">RIGENERA</x:String>
   <x:String x:Key="Text.AIAssistant.Tip" xml:space="preserve">Usa AI per generare il messaggio di commit</x:String>
-  <x:String x:Key="Text.App.Hide" xml:space="preserve">Nascondi SourceGit</x:String>
+  <x:String x:Key="Text.App.Hide" xml:space="preserve">Nascondi SourceGitPlus</x:String>
   <x:String x:Key="Text.App.ShowAll" xml:space="preserve">Mostra Tutto</x:String>
   <x:String x:Key="Text.Apply.File.Placeholder" xml:space="preserve">Seleziona file patch da applicare</x:String>
   <x:String x:Key="Text.Apply.IgnoreWS" xml:space="preserve">Ignora modifiche agli spazi</x:String>
@@ -35,7 +36,7 @@
   <x:String x:Key="Text.Archive.File.Placeholder" xml:space="preserve">Seleziona il percorso del file archivio</x:String>
   <x:String x:Key="Text.Archive.Revision" xml:space="preserve">Revisione:</x:String>
   <x:String x:Key="Text.Archive.Title" xml:space="preserve">Archivia</x:String>
-  <x:String x:Key="Text.Askpass" xml:space="preserve">Richiedi Password SourceGit</x:String>
+  <x:String x:Key="Text.Askpass" xml:space="preserve">Richiedi Password SourceGitPlus</x:String>
   <x:String x:Key="Text.Askpass.Passphrase" xml:space="preserve">Inserisci passphrase:</x:String>
   <x:String x:Key="Text.AssumeUnchanged" xml:space="preserve">FILE ASSUNTI COME INVARIATI</x:String>
   <x:String x:Key="Text.AssumeUnchanged.Empty" xml:space="preserve">NESSUN FILE ASSUNTO COME INVARIATO</x:String>
@@ -236,7 +237,7 @@ ${pure_files:N} Come ${files:N}, ma senza cartelle</x:String>
   <x:String x:Key="Text.Configure.IssueTracker.URLTemplate.Tip" xml:space="preserve">Utilizza $1, $2 per accedere ai valori dei gruppi regex.</x:String>
   <x:String x:Key="Text.Configure.OpenAI" xml:space="preserve">AI</x:String>
   <x:String x:Key="Text.Configure.OpenAI.Preferred" xml:space="preserve">Servizio preferito:</x:String>
-  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">Se il 'Servizio Preferito' é impostato, SourceGit utilizzerà solo quello per questo repository. Altrimenti, se ci sono più servizi disponibili, verrà mostrato un menu contestuale per sceglierne uno.</x:String>
+  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">Se il 'Servizio Preferito' é impostato, SourceGitPlus utilizzerà solo quello per questo repository. Altrimenti, se ci sono più servizi disponibili, verrà mostrato un menu contestuale per sceglierne uno.</x:String>
   <x:String x:Key="Text.Configure.Proxy" xml:space="preserve">Proxy HTTP</x:String>
   <x:String x:Key="Text.Configure.Proxy.Placeholder" xml:space="preserve">Proxy HTTP usato da questo repository</x:String>
   <x:String x:Key="Text.Configure.User" xml:space="preserve">Nome Utente</x:String>
@@ -254,8 +255,14 @@ ${pure_files:N} Come ${files:N}, ma senza cartelle</x:String>
   <x:String x:Key="Text.ConfigureCustomActionControls.Type" xml:space="preserve">Tipo:</x:String>
   <x:String x:Key="Text.ConfigureWorkspace" xml:space="preserve">Spazi di Lavoro</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Color" xml:space="preserve">Colore</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Icon" xml:space="preserve">Icon</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Name" xml:space="preserve">Nome</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Restore" xml:space="preserve">Ripristina schede all'avvio</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git" xml:space="preserve">Git identity (overrides repository settings)</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserName" xml:space="preserve">User name</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserEmail" xml:space="preserve">User email</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SigningKey" xml:space="preserve">GPG signing key ID</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SignCommits" xml:space="preserve">Sign commits with GPG (not set: repository setting)</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.Continue" xml:space="preserve">CONTINUA</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.NoLocalChanges" xml:space="preserve">Trovato un commit vuoto! Vuoi procedere (--allow-empty)?</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.StageAllThenCommit" xml:space="preserve">STAGE DI TUTTO E COMMITTA</x:String>
@@ -540,6 +547,7 @@ ${pure_files:N} Come ${files:N}, ma senza cartelle</x:String>
   <x:String x:Key="Text.Open" xml:space="preserve">Apri</x:String>
   <x:String x:Key="Text.Open.SystemDefaultEditor" xml:space="preserve">Editor Predefinito (Sistema)</x:String>
   <x:String x:Key="Text.OpenAppDataDir" xml:space="preserve">Apri Cartella Dati App</x:String>
+  <x:String x:Key="Text.OpenShell" xml:space="preserve">Open Shell</x:String>
   <x:String x:Key="Text.OpenFile" xml:space="preserve">Apri File</x:String>
   <x:String x:Key="Text.OpenInExternalMergeTool" xml:space="preserve">Apri nello Strumento di Merge</x:String>
   <x:String x:Key="Text.Optional" xml:space="preserve">Opzionale.</x:String>

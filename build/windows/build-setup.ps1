@@ -1,4 +1,4 @@
-# Builds SourceGit and packages it into a Windows installer (Inno Setup 6 required).
+# Builds SourceGitPlus and packages it into a Windows installer (Inno Setup 6 required).
 # Usage: .\build\windows\build-setup.ps1 [-Runtime win-x64|win-arm64] [-NoAot]
 param(
     [ValidateSet('win-x64', 'win-arm64')][string]$Runtime = 'win-x64',
@@ -14,9 +14,9 @@ if (-not $iscc) { throw 'Inno Setup 6 not found (winget install JRSoftware.InnoS
 
 Remove-Item $publish -Recurse -Force -ErrorAction SilentlyContinue
 $extra = if ($NoAot) { @('-p:DisableAOT=true') } else { @() }
-dotnet publish "$root\src\SourceGit.csproj" -c Release -r $Runtime -o $publish @extra
+dotnet publish "$root\src\SourceGitPlus.csproj" -c Release -r $Runtime -o $publish @extra
 if ($LASTEXITCODE) { throw 'dotnet publish failed' }
 
-& $iscc "/DAppVersion=$version" "/DRuntime=$Runtime" "/DSourceDir=$publish" "/DOutDir=$root\dist" "$PSScriptRoot\SourceGit.iss"
+& $iscc "/DAppVersion=$version" "/DRuntime=$Runtime" "/DSourceDir=$publish" "/DOutDir=$root\dist" "$PSScriptRoot\SourceGitPlus.iss"
 if ($LASTEXITCODE) { throw 'ISCC failed' }
 Write-Host "Installer: $root\dist"

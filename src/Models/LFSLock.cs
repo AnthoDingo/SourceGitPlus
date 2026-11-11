@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public class LFSLockOwner
     {

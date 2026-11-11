@@ -1,4 +1,4 @@
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     // Persisted form of an account (accounts.json). The token is stored protected, never in clear text on Windows.
     public class AccountRecord

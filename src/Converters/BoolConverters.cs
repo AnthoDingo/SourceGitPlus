@@ -3,7 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Data.Converters;
 using Avalonia.Media;
 
-namespace SourceGit.Converters
+namespace SourceGitPlus.Converters
 {
     public static class BoolConverters
     {

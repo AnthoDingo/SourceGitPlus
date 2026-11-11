@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace SourceGit.Commands
+namespace SourceGitPlus.Commands
 {
     public class Rebase : Command
     {

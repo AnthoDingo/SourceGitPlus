@@ -6,14 +6,15 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public static class GitHubApi
     {
-        // OAuth Device Flow needs the Client ID of an OAuth App (Device Flow enabled) registered by the user.
+        // Public OAuth App Client ID (Device Flow enabled). It is not a secret; the device flow needs no client secret.
+        // SOURCEGIT_GITHUB_CLIENT_ID overrides it, e.g. to test with another OAuth App.
         public static string OAuthClientId
         {
-            get => Environment.GetEnvironmentVariable("SOURCEGIT_GITHUB_CLIENT_ID") ?? string.Empty;
+            get => Environment.GetEnvironmentVariable("SOURCEGIT_GITHUB_CLIENT_ID") is { Length: > 0 } env ? env : "Ov23li35At9NVFCrqE9d";
         }
 
         public const string DEFAULT_URL = "https://github.com";
@@ -59,10 +60,30 @@ namespace SourceGit.Models
                 if (error == "slow_down")
                     interval += 5;
                 else if (error != "authorization_pending")
-                    throw new InvalidOperationException(error);
+                    throw ToAuthorizationException(error);
             }
 
-            throw new TimeoutException("The device code has expired.");
+            throw new TimeoutException("The device code has expired. Please try again.");
+        }
+
+        // Full device flow: requests a code, hands it to the UI (to show/copy it), then waits for the user to authorize.
+        public static async Task<string> AuthorizeAsync(string clientId, Func<GitHubDeviceCode, Task> onCode, CancellationToken ct)
+        {
+            GitHubDeviceCode code = await RequestDeviceCodeAsync(clientId, ct);
+            await onCode(code);
+            return await PollAccessTokenAsync(clientId, code, ct);
+        }
+
+        private static Exception ToAuthorizationException(string error)
+        {
+            return error switch
+            {
+                "access_denied" => new InvalidOperationException("Authorization was denied on GitHub."),
+                "expired_token" => new TimeoutException("The device code has expired. Please try again."),
+                "device_flow_disabled" => new InvalidOperationException("Device Flow is not enabled for this GitHub OAuth App."),
+                "incorrect_client_credentials" => new InvalidOperationException("The OAuth App Client ID is not valid."),
+                _ => new InvalidOperationException($"GitHub authorization failed: {error}"),
+            };
         }
 
         public static async Task<(string Login, string AvatarUrl)> GetUserAsync(string webUrl, string token, CancellationToken ct)

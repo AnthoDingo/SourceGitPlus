@@ -7,7 +7,7 @@ using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Styling;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public class ImageContainer : Control
     {

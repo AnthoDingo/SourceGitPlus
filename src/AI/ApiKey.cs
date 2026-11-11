@@ -5,7 +5,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace SourceGit.AI
+namespace SourceGitPlus.AI
 {
     public enum ApiKeyStorage
     {

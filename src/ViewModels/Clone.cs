@@ -5,7 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public record TargetGroup(string Id, string Name, string Description);
 

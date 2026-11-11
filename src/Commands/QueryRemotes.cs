@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace SourceGit.Commands
+namespace SourceGitPlus.Commands
 {
     public class QueryRemotes
     {

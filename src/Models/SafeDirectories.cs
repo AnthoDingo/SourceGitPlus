@@ -2,7 +2,7 @@ using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     /// <summary>
     ///     Helpers for the `safe.directory` protection introduced by git 2.35.2 (CVE-2022-24765).

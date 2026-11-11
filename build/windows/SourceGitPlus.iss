@@ -1,4 +1,4 @@
-; Usage: ISCC /DAppVersion=2026.23 /DRuntime=win-x64 /DSourceDir=<publish dir> /DOutDir=<dir> SourceGit.iss
+; Usage: ISCC /DAppVersion=2026.23 /DRuntime=win-x64 /DSourceDir=<publish dir> /DOutDir=<dir> SourceGitPlus.iss
 #ifndef AppVersion
   #define AppVersion "0.0"
 #endif
@@ -14,13 +14,13 @@
 
 [Setup]
 AppId={{B7C1F7E4-3D2A-4C55-9A53-5F0B6E1D7A11}
-AppName=SourceGit Plus
+AppName=SourceGitPlus
 AppVersion={#AppVersion}
 AppPublisher=sourcegit-scm
 AppPublisherURL=https://github.com/sourcegit-scm/sourcegit
-DefaultDirName={autopf}\SourceGit Plus
-DefaultGroupName=SourceGit Plus
-UninstallDisplayIcon={app}\SourceGit.exe
+DefaultDirName={autopf}\SourceGitPlus
+DefaultGroupName=SourceGitPlus
+UninstallDisplayIcon={app}\SourceGitPlus.exe
 OutputDir={#OutDir}
 OutputBaseFilename=SourceGitPlus-{#AppVersion}-{#Runtime}-setup
 LicenseFile=..\..\LICENSE
@@ -50,8 +50,8 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; Flags: unchecked
 Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "*.pdb"; Flags: ignoreversion recursesubdirs
 
 [Icons]
-Name: "{group}\SourceGit Plus"; Filename: "{app}\SourceGit.exe"
-Name: "{autodesktop}\SourceGit Plus"; Filename: "{app}\SourceGit.exe"; Tasks: desktopicon
+Name: "{group}\SourceGitPlus"; Filename: "{app}\SourceGitPlus.exe"
+Name: "{autodesktop}\SourceGitPlus"; Filename: "{app}\SourceGitPlus.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\SourceGit.exe"; Description: "{cm:LaunchProgram,SourceGit Plus}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\SourceGitPlus.exe"; Description: "{cm:LaunchProgram,SourceGitPlus}"; Flags: nowait postinstall skipifsilent

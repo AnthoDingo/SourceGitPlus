@@ -1,6 +1,6 @@
 using Avalonia.Media;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class AccountRepo
     {

@@ -2,14 +2,14 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:s="using:SourceGit"
-                    xmlns:ai="using:SourceGit.AI"
-                    xmlns:m="using:SourceGit.Models"
-                    xmlns:c="using:SourceGit.Converters"
-                    xmlns:vm="using:SourceGit.ViewModels"
-                    xmlns:v="using:SourceGit.Views"
+                    xmlns:s="using:SourceGitPlus"
+                    xmlns:ai="using:SourceGitPlus.AI"
+                    xmlns:m="using:SourceGitPlus.Models"
+                    xmlns:c="using:SourceGitPlus.Converters"
+                    xmlns:vm="using:SourceGitPlus.ViewModels"
+                    xmlns:v="using:SourceGitPlus.Views"
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-                    x:Class="SourceGit.Views.Preferences"
+                    x:Class="SourceGitPlus.Views.Preferences"
                     x:DataType="vm:Preferences"
                     x:Name="ThisControl"
                     Icon="/App.ico"
@@ -47,7 +47,7 @@
           <TabItem.Header>
             <TextBlock Classes="tab_header" Text="{DynamicResource Text.Preferences.General}"/>
           </TabItem.Header>
-          <Grid Margin="8" RowDefinitions="32,32,32,32,32,32,32,32,32,32,32,32,Auto" ColumnDefinitions="Auto,*">
+          <Grid Margin="8" RowDefinitions="32,32,32,32,32,8,32,32,8,32,32,32,8,32,32,Auto" ColumnDefinitions="Auto,*">
             <TextBlock Grid.Row="0" Grid.Column="0"
                        Text="{DynamicResource Text.Preferences.General.Locale}"
                        HorizontalAlignment="Right"
@@ -141,42 +141,42 @@
                          Text="{Binding MaxHistoryCommits}"/>
             </Grid>
 
-            <CheckBox Grid.Row="5" Grid.Column="1"
+            <CheckBox Grid.Row="6" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.ShowChangesPageByDefault}"
                       IsChecked="{Binding ShowLocalChangesByDefault, Mode=TwoWay}"/>
 
-            <CheckBox Grid.Row="6" Grid.Column="1"
+            <CheckBox Grid.Row="7" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.ShowChangesTabInCommitDetailByDefault}"
                       IsChecked="{Binding ShowChangesInCommitDetailByDefault, Mode=TwoWay}"/>
 
-            <CheckBox Grid.Row="7" Grid.Column="1"
+            <CheckBox Grid.Row="9" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.ShowTagsInGraph}"
                       IsChecked="{Binding ShowTagsInGraph, Mode=TwoWay}"/>
 
-            <CheckBox Grid.Row="8" Grid.Column="1"
+            <CheckBox Grid.Row="10" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.ShowRelativeTimeInGraph}"
                       IsChecked="{Binding DisplayTimeAsPeriodInHistories, Mode=TwoWay}"/>
 
-            <CheckBox Grid.Row="9" Grid.Column="1"
+            <CheckBox Grid.Row="11" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.UseCompactBranchNames}"
                       IsChecked="{Binding UseCompactBranchNamesInGraph, Mode=TwoWay}"/>
 
-            <CheckBox Grid.Row="10" Grid.Column="1"
+            <CheckBox Grid.Row="13" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.EnableCompactFolders}"
                       IsChecked="{Binding EnableCompactFoldersInChangesTree, Mode=TwoWay}"/>
 
-            <CheckBox Grid.Row="11" Grid.Column="1"
+            <CheckBox Grid.Row="14" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.UseGitHubStyleAvatar}"
                       IsChecked="{Binding UseGitHubStyleAvatar, Mode=TwoWay}"/>
 
-            <CheckBox Grid.Row="12" Grid.Column="1"
+            <CheckBox Grid.Row="15" Grid.Column="1"
                       Height="32"
                       Content="{DynamicResource Text.Preferences.General.Check4UpdatesOnStartup}"
                       IsVisible="{x:Static s:App.IsCheckForUpdateCommandVisible}"

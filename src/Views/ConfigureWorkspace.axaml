@@ -2,10 +2,10 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:vm="using:SourceGit.ViewModels"
-                    xmlns:v="using:SourceGit.Views"
+                    xmlns:vm="using:SourceGitPlus.ViewModels"
+                    xmlns:v="using:SourceGitPlus.Views"
                     mc:Ignorable="d" d:DesignWidth="500" d:DesignHeight="450"
-                    x:Class="SourceGit.Views.ConfigureWorkspace"
+                    x:Class="SourceGitPlus.Views.ConfigureWorkspace"
                     x:DataType="vm:ConfigureWorkspace"
                     x:Name="ThisControl"
                     Icon="/App.ico"
@@ -37,7 +37,7 @@
     </Grid>
 
     <!-- BODY -->
-    <Grid Grid.Row="1" ColumnDefinitions="200,16,256" MinHeight="340" Margin="8">
+    <Grid Grid.Row="1" ColumnDefinitions="200,16,Auto" MinHeight="340" Margin="8">
       <Border Grid.Column="0"
               BorderThickness="1" BorderBrush="{DynamicResource Brush.Border2}"
               Background="{DynamicResource Brush.Contents}">
@@ -118,25 +118,49 @@
       <ContentControl Grid.Column="2" Content="{Binding Selected}">
         <ContentControl.DataTemplates>
           <DataTemplate DataType="vm:Workspace">
-            <Grid RowDefinitions="30,32,30,32,30,Auto,32">
-              <TextBlock Grid.Row="0" Margin="0,0,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Name}" VerticalAlignment="Bottom"/>
-              <TextBox Grid.Row="1" CornerRadius="3" Height="28" Text="{Binding Name, Mode=TwoWay}"/>
+            <Grid ColumnDefinitions="256,24,256" VerticalAlignment="Top">
+              <!-- Left: identity of the workspace -->
+              <StackPanel Grid.Column="0">
+                <TextBlock Margin="0,0,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Name}"/>
+                <TextBox CornerRadius="3" Height="28" Text="{Binding Name, Mode=TwoWay}"/>
 
-              <TextBlock Grid.Row="2" Margin="0,0,0,4" Text="{DynamicResource Text.Preferences.Git.DefaultCloneDir}" VerticalAlignment="Bottom"/>
-              <TextBox Grid.Row="3" CornerRadius="3" Height="28" Text="{Binding DefaultCloneDir, Mode=TwoWay}">
-                <TextBox.InnerRightContent>
-                  <Button Classes="icon_button" Width="30" Height="30" Click="SelectDefaultCloneDir">
-                    <Path Data="{StaticResource Icons.Folder.Open}" Fill="{DynamicResource Brush.FG1}"/>
-                  </Button>
-                </TextBox.InnerRightContent>
-              </TextBox>
+                <TextBlock Margin="0,8,0,4" Text="{DynamicResource Text.Preferences.Git.DefaultCloneDir}"/>
+                <TextBox CornerRadius="3" Height="28" Text="{Binding DefaultCloneDir, Mode=TwoWay}">
+                  <TextBox.InnerRightContent>
+                    <Button Classes="icon_button" Width="30" Height="30" Click="SelectDefaultCloneDir">
+                      <Path Data="{StaticResource Icons.Folder.Open}" Fill="{DynamicResource Brush.FG1}"/>
+                    </Button>
+                  </TextBox.InnerRightContent>
+                </TextBox>
 
-              <TextBlock Grid.Row="4" Margin="0,0,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Color}" VerticalAlignment="Bottom"/>
-              <v:ColorPicker Grid.Row="5" HorizontalAlignment="Left" Value="{Binding Color, Mode=TwoWay}"/>
+                <TextBlock Margin="0,8,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Color}"/>
+                <v:ColorPicker HorizontalAlignment="Left" Value="{Binding Color, Mode=TwoWay}"/>
 
-              <CheckBox Grid.Row="6"
-                        Content="{DynamicResource Text.ConfigureWorkspace.Restore}"
-                        IsChecked="{Binding RestoreOnStartup, Mode=TwoWay}"/>
+                <TextBlock Margin="0,8,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Icon}"/>
+                <Path Width="32" Height="32" HorizontalAlignment="Left" Data="{StaticResource Icons.Workspace}" Fill="{Binding Brush}"/>
+
+                <CheckBox Margin="0,12,0,0" Content="{DynamicResource Text.ConfigureWorkspace.Restore}" IsChecked="{Binding RestoreOnStartup, Mode=TwoWay}"/>
+              </StackPanel>
+
+              <!-- Right: Git identity overrides -->
+              <StackPanel Grid.Column="2">
+                <TextBlock Margin="0,0,0,8" FontWeight="Bold" TextWrapping="Wrap" Text="{DynamicResource Text.ConfigureWorkspace.Git}"/>
+
+                <TextBlock Margin="0,0,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Git.UserName}"/>
+                <TextBox CornerRadius="3" Height="28" Text="{Binding GitUserName, Mode=TwoWay}"/>
+
+                <TextBlock Margin="0,8,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Git.UserEmail}"/>
+                <TextBox CornerRadius="3" Height="28" Text="{Binding GitUserEmail, Mode=TwoWay}"/>
+
+                <TextBlock Margin="0,8,0,4" Text="{DynamicResource Text.ConfigureWorkspace.Git.SigningKey}"/>
+                <TextBox CornerRadius="3" Height="28" Text="{Binding GitSigningKey, Mode=TwoWay}"/>
+
+                <CheckBox Margin="0,12,0,0"
+                          IsThreeState="True"
+                          IsChecked="{Binding GitSignCommits, Mode=TwoWay}">
+                  <TextBlock TextWrapping="Wrap" Text="{DynamicResource Text.ConfigureWorkspace.Git.SignCommits}"/>
+                </CheckBox>
+              </StackPanel>
             </Grid>
           </DataTemplate>
         </ContentControl.DataTemplates>

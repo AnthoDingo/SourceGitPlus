@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class AccountRepoGroup
     {

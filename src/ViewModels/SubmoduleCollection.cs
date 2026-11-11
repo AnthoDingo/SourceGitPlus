@@ -4,7 +4,7 @@ using Avalonia.Collections;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class SubmoduleTreeNode : ObservableObject
     {

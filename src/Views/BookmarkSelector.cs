@@ -6,7 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Media;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public class BookmarkSelector : Control
     {

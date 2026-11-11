@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public partial class UpdateToken : ChromelessWindow
     {
@@ -65,18 +65,14 @@ namespace SourceGit.Views
 
         private async Task<string> AuthorizeAsync()
         {
-            string clientId = Models.GitHubApi.OAuthClientId;
-            if (string.IsNullOrEmpty(clientId))
-                throw new InvalidOperationException("Set the OAuth App Client ID in the SOURCEGIT_GITHUB_CLIENT_ID environment variable.");
-
-            Models.GitHubDeviceCode code = await Models.GitHubApi.RequestDeviceCodeAsync(clientId, _cts.Token);
-            if (Clipboard != null)
-                await Clipboard.SetTextAsync(code.UserCode);
-            Native.OS.OpenBrowser(code.VerificationUri);
-            StatusText.Text = $"Enter the code {code.UserCode} at {code.VerificationUri} (copied to the clipboard). Waiting for authorization...";
-            StatusText.IsVisible = true;
-
-            return await Models.GitHubApi.PollAccessTokenAsync(clientId, code, _cts.Token);
+            return await Models.GitHubApi.AuthorizeAsync(Models.GitHubApi.OAuthClientId, async code =>
+            {
+                if (Clipboard != null)
+                    await Clipboard.SetTextAsync(code.UserCode);
+                Native.OS.OpenBrowser(code.VerificationUri);
+                StatusText.Text = $"Enter the code {code.UserCode} at {code.VerificationUri} (copied to the clipboard). Waiting for authorization...";
+                StatusText.IsVisible = true;
+            }, _cts.Token);
         }
 
         protected override void OnClosed(EventArgs e)

@@ -2,7 +2,7 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public static class TokenProtector
     {

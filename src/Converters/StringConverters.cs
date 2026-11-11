@@ -6,7 +6,7 @@ using Avalonia.Data.Converters;
 using Avalonia.Input;
 using Avalonia.Styling;
 
-namespace SourceGit.Converters
+namespace SourceGitPlus.Converters
 {
     public static class StringConverters
     {
@@ -98,7 +98,7 @@ namespace SourceGit.Converters
             public object Convert(IList<object> values, Type targetType, object parameter, CultureInfo culture)
             {
                 if (values is not { Count: 2 })
-                    return "SourceGit";
+                    return "SourceGitPlus";
 
                 var page = values[0] as string;
                 var workspace = values[1] as string;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public enum CommitSearchMethod
     {

@@ -5,7 +5,7 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public partial class LoginAccount : ChromelessWindow
     {
@@ -141,26 +141,19 @@ namespace SourceGit.Views
                 if (_provider == "Bitbucket" && MethodBox.SelectedIndex == 0)
                 {
                     // Bitbucket Cloud OAuth needs an OAuth consumer with a redirect URL: not available here.
-                    ShowStatus("Bitbucket OAuth is not available in SourceGit. Use an API Token instead.");
+                    ShowStatus("Bitbucket OAuth is not available in SourceGitPlus. Use an API Token instead.");
                     return;
                 }
 
                 if (oauth)
                 {
-                    string clientId = Models.GitHubApi.OAuthClientId;
-                    if (string.IsNullOrEmpty(clientId))
+                    token = await Models.GitHubApi.AuthorizeAsync(Models.GitHubApi.OAuthClientId, async code =>
                     {
-                        ShowStatus("OAuth needs a GitHub OAuth App (Device Flow enabled). Set its Client ID in the SOURCEGIT_GITHUB_CLIENT_ID environment variable, or use a Personal Access Token.");
-                        return;
-                    }
-
-                    Models.GitHubDeviceCode code = await Models.GitHubApi.RequestDeviceCodeAsync(clientId, _cts.Token);
-                    if (Clipboard != null)
-                        await Clipboard.SetTextAsync(code.UserCode);
-                    Native.OS.OpenBrowser(code.VerificationUri);
-                    ShowStatus($"Enter the code {code.UserCode} at {code.VerificationUri} (copied to the clipboard). Waiting for authorization...");
-
-                    token = await Models.GitHubApi.PollAccessTokenAsync(clientId, code, _cts.Token);
+                        if (Clipboard != null)
+                            await Clipboard.SetTextAsync(code.UserCode);
+                        Native.OS.OpenBrowser(code.VerificationUri);
+                        ShowStatus($"Enter the code {code.UserCode} at {code.VerificationUri} (copied to the clipboard). Waiting for authorization...");
+                    }, _cts.Token);
                 }
                 else if (_provider == "Bitbucket")
                 {
@@ -185,7 +178,7 @@ namespace SourceGit.Views
                 }
 
                 string auth = oauth ? "OAuth" : (_provider == "Bitbucket" ? "API Token" : "Personal Access Token");
-                ViewModels.Accounts.Instance.Add(new ViewModels.Account(_provider, ProviderIcon.Data, login, url, auth, token));
+                ViewModels.Accounts.Instance.AddOrReplace(new ViewModels.Account(_provider, ProviderIcon.Data, login, url, auth, token));
                 Close();
             }
             catch (OperationCanceledException)

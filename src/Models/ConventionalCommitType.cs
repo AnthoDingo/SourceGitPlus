@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text.Json;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public class ConventionalCommitType
     {

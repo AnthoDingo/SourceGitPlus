@@ -35,33 +35,33 @@ if [[ ! -f "appimagetool" ]]; then
     chmod +x appimagetool
 fi
 
-rm -f SourceGit/*.dbg
-rm -f SourceGit/*.pdb
-chmod 755 -R SourceGit
+rm -f SourceGitPlus/*.dbg
+rm -f SourceGitPlus/*.pdb
+chmod 755 -R SourceGitPlus
 
-mkdir -p SourceGit.AppDir/opt
-mkdir -p SourceGit.AppDir/usr/share/metainfo
-mkdir -p SourceGit.AppDir/usr/share/applications
+mkdir -p SourceGitPlus.AppDir/opt
+mkdir -p SourceGitPlus.AppDir/usr/share/metainfo
+mkdir -p SourceGitPlus.AppDir/usr/share/applications
 
-cp -r SourceGit SourceGit.AppDir/opt/sourcegit
-desktop-file-install resources/_common/applications/sourcegit.desktop --dir SourceGit.AppDir/usr/share/applications \
+cp -r SourceGitPlus SourceGitPlus.AppDir/opt/sourcegitplus
+desktop-file-install resources/_common/applications/sourcegitplus.desktop --dir SourceGitPlus.AppDir/usr/share/applications \
     --set-icon com.sourcegit_scm.SourceGit --set-key=Exec --set-value=AppRun
-mv SourceGit.AppDir/usr/share/applications/{sourcegit,com.sourcegit_scm.SourceGit}.desktop
-cp resources/_common/icons/sourcegit.png SourceGit.AppDir/com.sourcegit_scm.SourceGit.png
-ln -rsf SourceGit.AppDir/opt/sourcegit/sourcegit SourceGit.AppDir/AppRun
-ln -rsf SourceGit.AppDir/usr/share/applications/com.sourcegit_scm.SourceGit.desktop SourceGit.AppDir
-cp resources/appimage/sourcegit.appdata.xml SourceGit.AppDir/usr/share/metainfo/com.sourcegit_scm.SourceGit.appdata.xml
+mv SourceGitPlus.AppDir/usr/share/applications/{sourcegitplus,com.sourcegit_scm.SourceGit}.desktop
+cp resources/_common/icons/sourcegitplus.png SourceGitPlus.AppDir/com.sourcegit_scm.SourceGit.png
+ln -rsf SourceGitPlus.AppDir/opt/sourcegitplus/sourcegitplus SourceGitPlus.AppDir/AppRun
+ln -rsf SourceGitPlus.AppDir/usr/share/applications/com.sourcegit_scm.SourceGit.desktop SourceGitPlus.AppDir
+cp resources/appimage/sourcegitplus.appdata.xml SourceGitPlus.AppDir/usr/share/metainfo/com.sourcegit_scm.SourceGit.appdata.xml
 
 ARCH="$appimage_arch" ./appimagetool -v \
-    -u "gh-releases-zsync|sourcegit-scm|sourcegit|latest|sourcegit-*.linux.$arch.AppImage.zsync" \
-    SourceGit.AppDir "sourcegit-$VERSION.linux.$arch.AppImage"
+    -u "gh-releases-zsync|sourcegit-scm|sourcegitplus|latest|sourcegitplus-*.linux.$arch.AppImage.zsync" \
+    SourceGitPlus.AppDir "sourcegitplus-$VERSION.linux.$arch.AppImage"
 
-mkdir -p resources/deb/opt/sourcegit/
+mkdir -p resources/deb/opt/sourcegitplus/
 mkdir -p resources/deb/usr/bin
 mkdir -p resources/deb/usr/share/applications
 mkdir -p resources/deb/usr/share/icons
-cp -f SourceGit/* resources/deb/opt/sourcegit
-ln -rsf resources/deb/opt/sourcegit/sourcegit resources/deb/usr/bin
+cp -f SourceGitPlus/* resources/deb/opt/sourcegitplus
+ln -rsf resources/deb/opt/sourcegitplus/sourcegitplus resources/deb/usr/bin
 cp -r resources/_common/applications resources/deb/usr/share
 cp -r resources/_common/icons resources/deb/usr/share
 
@@ -83,7 +83,7 @@ sed -i -e "s/^Version:.*/Version: $VERSION/" \
     resources/deb/DEBIAN/control
 
 # Build deb package with gzip compression
-dpkg-deb -Zgzip --root-owner-group --build resources/deb "sourcegit_$VERSION-1_$arch.deb"
+dpkg-deb -Zgzip --root-owner-group --build resources/deb "sourcegitplus_$VERSION-1_$arch.deb"
 
 rpmbuild -bb --target="$target" resources/rpm/SPECS/build.spec --define "_topdir $(pwd)/resources/rpm" --define "_version $VERSION"
-mv "resources/rpm/RPMS/$target/sourcegit-$VERSION-1.$target.rpm" ./
+mv "resources/rpm/RPMS/$target/sourcegitplus-$VERSION-1.$target.rpm" ./

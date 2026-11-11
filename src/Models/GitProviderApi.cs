@@ -4,7 +4,7 @@ using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     // Per-provider "current user" and "my repositories" calls.
     public static class GitProviderApi

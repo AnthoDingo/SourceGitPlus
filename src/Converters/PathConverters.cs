@@ -1,7 +1,7 @@
 using System.IO;
 using Avalonia.Data.Converters;
 
-namespace SourceGit.Converters
+namespace SourceGitPlus.Converters
 {
     public static class PathConverters
     {
