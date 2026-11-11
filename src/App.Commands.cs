@@ -46,6 +46,15 @@ namespace SourceGit
             }
         });
 
+        public static readonly Command OpenAccountsCommand = new Command(async _ =>
+        {
+            if (Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime { MainWindow: { } owner })
+            {
+                Views.Accounts dialog = new Views.Accounts();
+                await dialog.ShowDialog(owner);
+            }
+        });
+
         public static readonly Command OpenHotkeysCommand = new Command(async _ =>
         {
             if (Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime { MainWindow: { } owner })

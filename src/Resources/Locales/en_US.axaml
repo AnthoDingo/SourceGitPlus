@@ -1,4 +1,7 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:String x:Key="Text.Accounts.Add" xml:space="preserve">Add Account</x:String>
+  <x:String x:Key="Text.Accounts.Login" xml:space="preserve">Log in</x:String>
+  <x:String x:Key="Text.Accounts" xml:space="preserve">Accounts</x:String>
   <x:String x:Key="Text.About" xml:space="preserve">About</x:String>
   <x:String x:Key="Text.About.Menu" xml:space="preserve">About SourceGit</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">Release Date: {0}</x:String>

@@ -1,0 +1,16 @@
+using System.Collections.Generic;
+
+namespace SourceGit.ViewModels
+{
+    public class AccountRepoGroup
+    {
+        public string Owner { get; }
+        public List<AccountRepo> Repositories { get; }
+
+        public AccountRepoGroup(string owner, List<AccountRepo> repositories)
+        {
+            Owner = owner;
+            Repositories = repositories;
+        }
+    }
+}

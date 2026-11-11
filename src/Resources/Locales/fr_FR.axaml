@@ -3,6 +3,9 @@
     <ResourceInclude Source="avares://SourceGit/Resources/Locales/en_US.axaml"/>
   </ResourceDictionary.MergedDictionaries>
 
+  <x:String x:Key="Text.Accounts.Add" xml:space="preserve">Ajouter un compte</x:String>
+  <x:String x:Key="Text.Accounts.Login" xml:space="preserve">Se connecter</x:String>
+  <x:String x:Key="Text.Accounts" xml:space="preserve">Comptes</x:String>
   <x:String x:Key="Text.About" xml:space="preserve">À propos</x:String>
   <x:String x:Key="Text.About.Menu" xml:space="preserve">À propos de SourceGit</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">Date de publication : {0}</x:String>
