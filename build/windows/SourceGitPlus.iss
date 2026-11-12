@@ -52,8 +52,13 @@ ArchitecturesInstallIn64BitMode=x64compatible
 Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "french"; MessagesFile: "compiler:Languages\French.isl"
 
+[CustomMessages]
+english.AddToPath=Add the sgp command to PATH (open a repository from a terminal with: sgp .)
+french.AddToPath=Ajouter la commande sgp au PATH (ouvrir un dépôt depuis un terminal avec : sgp .)
+
 [Tasks]
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; Flags: unchecked
+Name: "addtopath"; Description: "{cm:AddToPath}"
 
 [Files]
 Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "*.pdb"; Flags: ignoreversion recursesubdirs
@@ -61,6 +66,51 @@ Source: "{#SourceDir}\*"; DestDir: "{app}"; Excludes: "*.pdb"; Flags: ignorevers
 [Icons]
 Name: "{group}\SourceGitPlus"; Filename: "{app}\SourceGitPlus.exe"
 Name: "{autodesktop}\SourceGitPlus"; Filename: "{app}\SourceGitPlus.exe"; Tasks: desktopicon
+
+[Code]
+// Adds or removes {app} in the user PATH (HKCU, no admin needed).
+function RemovePathEntry(const Dir, Path: string): string;
+var
+  S: string;
+begin
+  S := ';' + Path + ';';
+  StringChangeEx(S, ';' + Dir + ';', ';', False);
+  while Pos(';;', S) > 0 do
+    StringChangeEx(S, ';;', ';', True);
+  Result := S;
+  if (Length(Result) > 0) and (Result[1] = ';') then
+    Delete(Result, 1, 1);
+  if (Length(Result) > 0) and (Result[Length(Result)] = ';') then
+    Delete(Result, Length(Result), 1);
+end;
+
+procedure AddToUserPath(const Dir: string);
+var
+  Path: string;
+begin
+  if not RegQueryStringValue(HKCU, 'Environment', 'Path', Path) then
+    Path := '';
+  if Pos(';' + Uppercase(Dir) + ';', ';' + Uppercase(Path) + ';') = 0 then
+  begin
+    if (Path <> '') and (Path[Length(Path)] <> ';') then
+      Path := Path + ';';
+    RegWriteExpandStringValue(HKCU, 'Environment', 'Path', Path + Dir);
+  end;
+end;
+
+procedure CurStepChanged(CurStep: TSetupStep);
+begin
+  if (CurStep = ssPostInstall) and WizardIsTaskSelected('addtopath') then
+    AddToUserPath(ExpandConstant('{app}'));
+end;
+
+procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
+var
+  Path: string;
+begin
+  if (CurUninstallStep = usPostUninstall) and RegQueryStringValue(HKCU, 'Environment', 'Path', Path) then
+    RegWriteExpandStringValue(HKCU, 'Environment', 'Path', RemovePathEntry(ExpandConstant('{app}'), Path));
+end;
 
 [Run]
 Filename: "{app}\SourceGitPlus.exe"; Description: "{cm:LaunchProgram,SourceGitPlus}"; Flags: nowait postinstall skipifsilent

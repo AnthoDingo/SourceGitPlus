@@ -33,6 +33,12 @@
     <DefineConstants>$(DefineConstants);DISABLE_UPDATE_DETECTION</DefineConstants>
   </PropertyGroup>
 
+  <!-- Windows release publish: add the sgp.exe / sg.exe command line launchers next to SourceGitPlus.exe. -->
+  <Target Name="PublishWindowsLaunchers" AfterTargets="Publish" Condition="'$(Configuration)' == 'Release' and $(RuntimeIdentifier.StartsWith('win'))">
+    <Exec Command="dotnet publish &quot;$(MSBuildProjectDirectory)\..\build\windows\launcher\sgp.csproj&quot; -c Release -r $(RuntimeIdentifier) -o &quot;$(PublishDir)&quot;" />
+    <Copy SourceFiles="$(PublishDir)sgp.exe" DestinationFiles="$(PublishDir)sg.exe" />
+  </Target>
+
   <ItemGroup>
     <AssemblyMetadata Include="BuildDate" Value="$([System.DateTime]::Now.ToString('o'))" />
   </ItemGroup>
