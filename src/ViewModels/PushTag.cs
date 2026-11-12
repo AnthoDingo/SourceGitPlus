@@ -48,6 +48,12 @@ namespace SourceGitPlus.ViewModels
             {
                 foreach (var remote in _repo.Remotes)
                 {
+                    if (remote.IsReadOnly)
+                    {
+                        log.AppendLine(App.Text("Remote.ReadOnly.Skipped", remote.Name));
+                        continue;
+                    }
+
                     succ = await new Commands.Push(_repo.FullPath, remote, tag, false)
                         .Use(log)
                         .ExecAsync();

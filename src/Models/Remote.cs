@@ -34,6 +34,7 @@ namespace SourceGitPlus.Models
         public string PushURL { get; set; }
         public string PrivateSSHKey { get; set; }
         public bool DisableAutoFetch { get; set; }
+        public bool IsReadOnly { get; set; }
 
         public static bool IsSSH(string url)
         {

@@ -1114,4 +1114,7 @@
   <x:String x:Key="Text.Worktree.Remove" xml:space="preserve">移除工作树</x:String>
   <x:String x:Key="Text.Worktree.Unlock" xml:space="preserve">解除工作树锁定</x:String>
   <x:String x:Key="Text.Yes" xml:space="preserve">好的</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly" xml:space="preserve">Read-only: never push to this remote</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly.Blocked" xml:space="preserve">Remote '{0}' is read-only. Push cancelled.</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly.Skipped" xml:space="preserve">Skipped read-only remote '{0}'.</x:String>
 </ResourceDictionary>

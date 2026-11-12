@@ -55,6 +55,12 @@ namespace SourceGitPlus.ViewModels
             set;
         }
 
+        public bool ReadOnly
+        {
+            get => _readOnly;
+            set => SetProperty(ref _readOnly, value);
+        }
+
         public EditRemote(Repository repo, Models.Remote remote)
         {
             _repo = repo;
@@ -63,6 +69,7 @@ namespace SourceGitPlus.ViewModels
             _url = remote.URL;
             _useSSH = Models.Remote.IsSSH(remote.URL);
             _sshkey = remote.PrivateSSHKey;
+            _readOnly = remote.IsReadOnly;
             ResetPushURL = true;
         }
 
@@ -142,6 +149,13 @@ namespace SourceGitPlus.ViewModels
                     _remote.PrivateSSHKey = key;
             }
 
+            // Read-only flag
+            {
+                var succ = await new Commands.Config(_repo.FullPath).SetAsync($"remote.{_name}.readonly", _readOnly ? "true" : null);
+                if (succ)
+                    _remote.IsReadOnly = _readOnly;
+            }
+
             return true;
         }
 
@@ -151,5 +165,6 @@ namespace SourceGitPlus.ViewModels
         private string _url = null;
         private bool _useSSH = false;
         private string _sshkey = string.Empty;
+        private bool _readOnly = false;
     }
 }

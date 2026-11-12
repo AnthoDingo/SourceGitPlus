@@ -991,4 +991,7 @@
   <x:String x:Key="Text.Worktree.Remove" xml:space="preserve">Supprimer</x:String>
   <x:String x:Key="Text.Worktree.Unlock" xml:space="preserve">Déverrouiller</x:String>
   <x:String x:Key="Text.Yes" xml:space="preserve">OUI</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly" xml:space="preserve">Lecture seule : ne jamais pousser vers ce dépôt distant</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly.Blocked" xml:space="preserve">Le dépôt distant '{0}' est en lecture seule. Push annulé.</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly.Skipped" xml:space="preserve">Dépôt distant en lecture seule ignoré : '{0}'.</x:String>
 </ResourceDictionary>

@@ -50,6 +50,12 @@ namespace SourceGitPlus.ViewModels
             set;
         } = false;
 
+        public bool ReadOnly
+        {
+            get => _readOnly;
+            set => SetProperty(ref _readOnly, value);
+        }
+
         public AddRemote(Repository repo)
         {
             _repo = repo;
@@ -111,11 +117,16 @@ namespace SourceGitPlus.ViewModels
                 {
                     Name = _name,
                     PrivateSSHKey = _useSSH ? _sshkey : null,
+                    IsReadOnly = _readOnly,
                 };
 
                 await new Commands.Config(_repo.FullPath)
                     .Use(log)
                     .SetAsync($"remote.{_name}.sshkey", _useSSH ? SSHKey : null);
+
+                await new Commands.Config(_repo.FullPath)
+                    .Use(log)
+                    .SetAsync($"remote.{_name}.readonly", _readOnly ? "true" : null);
 
                 await new Commands.Fetch(_repo.FullPath, remote, FetchWithoutTags, false)
                     .Use(log)
@@ -134,5 +145,6 @@ namespace SourceGitPlus.ViewModels
         private string _url = string.Empty;
         private bool _useSSH = false;
         private string _sshkey = string.Empty;
+        private bool _readOnly = false;
     }
 }

@@ -644,4 +644,7 @@
   <x:String x:Key="Text.Worktree.Lock" xml:space="preserve">Bloquear</x:String>
   <x:String x:Key="Text.Worktree.Remove" xml:space="preserve">Remover</x:String>
   <x:String x:Key="Text.Worktree.Unlock" xml:space="preserve">Desbloquear</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly" xml:space="preserve">Read-only: never push to this remote</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly.Blocked" xml:space="preserve">Remote '{0}' is read-only. Push cancelled.</x:String>
+  <x:String x:Key="Text.Remote.ReadOnly.Skipped" xml:space="preserve">Skipped read-only remote '{0}'.</x:String>
 </ResourceDictionary>
