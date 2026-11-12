@@ -490,7 +490,7 @@ namespace SourceGitPlus
             {
                 var arg = desktop.Args[0].Replace('\\', '/').TrimEnd('/').Trim('\"').Trim();
                 if (Directory.Exists(arg))
-                    startupRepo = arg;
+                    startupRepo = Path.GetFullPath(arg); // "sgp ." must resolve against the terminal's directory
             }
 
             var pref = ViewModels.Preferences.Instance;

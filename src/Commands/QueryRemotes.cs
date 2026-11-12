@@ -18,6 +18,7 @@ namespace SourceGitPlus.Commands
             var pushUrls = new Dictionary<string, string>();
             var privateSSHKeys = new Dictionary<string, string>();
             var disableAutoFetchRemotes = new HashSet<string>();
+            var readOnlyRemotes = new HashSet<string>();
 
             var config = await new Config(_repo).ReadAllAsync().ConfigureAwait(false);
             foreach (var (k, v) in config)
@@ -43,6 +44,12 @@ namespace SourceGitPlus.Commands
                     names.Add(name);
                     privateSSHKeys[name] = v;
                 }
+                else if (k.EndsWith(".readonly", StringComparison.OrdinalIgnoreCase) &&
+                         v.Equals("true", StringComparison.OrdinalIgnoreCase))
+                {
+                    var name = k.Substring(7, k.Length - 16).Trim('"');
+                    readOnlyRemotes.Add(name);
+                }
                 else if (k.EndsWith(".disableautofetch", StringComparison.OrdinalIgnoreCase) &&
                          v.Equals("true", StringComparison.OrdinalIgnoreCase))
                 {
@@ -63,7 +70,8 @@ namespace SourceGitPlus.Commands
                     URL = url,
                     PushURL = pushUrls.TryGetValue(name, out var pushURL) ? pushURL : null,
                     PrivateSSHKey = privateSSHKeys.TryGetValue(name, out var privateSSHKey) ? privateSSHKey : null,
-                    DisableAutoFetch = disableAutoFetchRemotes.Contains(name)
+                    DisableAutoFetch = disableAutoFetchRemotes.Contains(name),
+                    IsReadOnly = readOnlyRemotes.Contains(name),
                 };
 
                 remotes.Add(r);

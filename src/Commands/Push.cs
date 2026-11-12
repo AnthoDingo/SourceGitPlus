@@ -4,11 +4,18 @@ namespace SourceGitPlus.Commands
 {
     public class Push : Command
     {
+        // Read-only remotes never receive a push, whatever the caller.
+        public static string ReadOnlyReason(Models.Remote remote)
+        {
+            return remote.IsReadOnly ? App.Text("Remote.ReadOnly.Blocked", remote.Name) : null;
+        }
+
         public Push(string repo, Models.Branch local, Models.Remote remote, Models.Branch remoteBranch, bool withTags, bool checkSubmodules, bool track, bool force, bool noVerify)
         {
             WorkingDirectory = repo;
             Context = repo;
             SSHKey = remote.PrivateSSHKey;
+            BlockedReason = ReadOnlyReason(remote);
 
             var builder = new StringBuilder(1024);
             builder.Append("push --progress --verbose ");
@@ -32,6 +39,7 @@ namespace SourceGitPlus.Commands
             WorkingDirectory = repo;
             Context = repo;
             SSHKey = remote.PrivateSSHKey;
+            BlockedReason = ReadOnlyReason(remote);
 
             var builder = new StringBuilder(1024);
             builder.Append("push --progress --verbose ");
@@ -47,6 +55,7 @@ namespace SourceGitPlus.Commands
             WorkingDirectory = repo;
             Context = repo;
             SSHKey = remote.PrivateSSHKey;
+            BlockedReason = ReadOnlyReason(remote);
 
             var builder = new StringBuilder(512);
             builder.Append("push ");

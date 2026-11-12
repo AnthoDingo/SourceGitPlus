@@ -37,8 +37,19 @@ namespace SourceGitPlus.Commands
         public bool RaiseError { get; set; } = true;
         public Models.ICommandLog Log { get; set; } = null;
 
+        // When set, the command is refused before running git (e.g. push to a read-only remote).
+        public string BlockedReason { get; set; } = null;
+
         public async Task<bool> ExecAsync()
         {
+            if (!string.IsNullOrEmpty(BlockedReason))
+            {
+                Log?.AppendLine(BlockedReason);
+                if (RaiseError)
+                    RaiseException(BlockedReason);
+                return false;
+            }
+
             Log?.AppendLine($"$ git {Args}\n");
 
             var errs = new List<string>();
