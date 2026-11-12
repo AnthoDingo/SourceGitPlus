@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public partial class DeleteRemote : UserControl
     {

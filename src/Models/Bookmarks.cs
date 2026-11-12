@@ -1,4 +1,4 @@
-﻿namespace SourceGit.Models
+﻿namespace SourceGitPlus.Models
 {
     public static class Bookmarks
     {

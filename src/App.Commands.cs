@@ -2,7 +2,7 @@ using System;
 using System.Windows.Input;
 using Avalonia.Controls.ApplicationLifetimes;
 
-namespace SourceGit
+namespace SourceGitPlus
 {
     public partial class App
     {
@@ -46,6 +46,15 @@ namespace SourceGit
             }
         });
 
+        public static readonly Command OpenAccountsCommand = new Command(async _ =>
+        {
+            if (Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime { MainWindow: { } owner })
+            {
+                Views.Accounts dialog = new Views.Accounts();
+                await dialog.ShowDialog(owner);
+            }
+        });
+
         public static readonly Command OpenHotkeysCommand = new Command(async _ =>
         {
             if (Current?.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime { MainWindow: { } owner })
@@ -63,6 +72,14 @@ namespace SourceGit
         public static readonly Command OpenAppDataDirCommand = new Command(_ =>
         {
             Native.OS.OpenInFileManager(Native.OS.BasicDirectories.CacheDir);
+        });
+
+        public static readonly Command OpenShellCommand = new Command(_ =>
+        {
+            if (GetLauncher()?.ActivePage?.Data is ViewModels.Repository repo)
+                Native.OS.OpenTerminal(repo.FullPath);
+            else
+                ViewModels.Welcome.Instance.OpenTerminal();
         });
 
         public static readonly Command OpenAboutCommand = new Command(async _ =>

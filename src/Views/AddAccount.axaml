@@ -1,0 +1,78 @@
+<v:ChromelessWindow xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="using:SourceGitPlus.Views"
+                    x:Class="SourceGitPlus.Views.AddAccount"
+                    x:Name="ThisControl"
+                    Icon="/App.ico"
+                    Title="{DynamicResource Text.Accounts.Add}"
+                    Width="450" Height="350"
+                    CanResize="False"
+                    WindowStartupLocation="CenterOwner">
+  <Grid RowDefinitions="Auto,Auto,*,Auto">
+    <Grid Grid.Row="0" Height="28" IsVisible="{Binding !#ThisControl.UseSystemWindowFrame}">
+      <Border Background="{DynamicResource Brush.TitleBar}" PointerPressed="BeginMoveWindow"/>
+      <v:CaptionButtons HorizontalAlignment="Right" IsCloseButtonOnly="True" IsVisible="{OnPlatform True, macOS=False}"/>
+    </Grid>
+
+    <TextBlock Grid.Row="1" Classes="bold" Margin="20,4,20,8" FontSize="14" Text="{DynamicResource Text.Accounts.Add}"/>
+
+    <Border Grid.Row="2" Margin="16,0" BorderThickness="1" BorderBrush="{DynamicResource Brush.Border1}" Background="{DynamicResource Brush.Contents}">
+      <ListBox x:Name="ProviderList" Background="Transparent" BorderThickness="0" Padding="12">
+        <ListBox.ItemsPanel>
+          <ItemsPanelTemplate>
+            <WrapPanel Orientation="Horizontal"/>
+          </ItemsPanelTemplate>
+        </ListBox.ItemsPanel>
+        <ListBoxItem Width="96" Padding="4,8" HorizontalContentAlignment="Center">
+          <StackPanel Spacing="8">
+            <Path Width="24" Height="24" Data="{StaticResource Icons.Provider.Bitbucket}" Fill="{DynamicResource Brush.FG2}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Bitbucket" TextWrapping="Wrap" TextAlignment="Center"/>
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem Width="96" Padding="4,8" HorizontalContentAlignment="Center">
+          <StackPanel Spacing="8">
+            <Path Width="24" Height="24" Data="{StaticResource Icons.Provider.Bitbucket}" Fill="{DynamicResource Brush.FG2}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Bitbucket Server" TextWrapping="Wrap" TextAlignment="Center"/>
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem Width="96" Padding="4,8" HorizontalContentAlignment="Center">
+          <StackPanel Spacing="8">
+            <Path Width="24" Height="24" Data="{StaticResource Icons.Provider.Gitea}" Fill="{DynamicResource Brush.FG2}" HorizontalAlignment="Center"/>
+            <TextBlock Text="Gitea" TextWrapping="Wrap" TextAlignment="Center"/>
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem Width="96" Padding="4,8" HorizontalContentAlignment="Center">
+          <StackPanel Spacing="8">
+            <Path Width="24" Height="24" Data="{StaticResource Icons.GitHub}" Fill="{DynamicResource Brush.FG2}" HorizontalAlignment="Center"/>
+            <TextBlock Text="GitHub" TextWrapping="Wrap" TextAlignment="Center"/>
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem Width="96" Padding="4,8" HorizontalContentAlignment="Center">
+          <StackPanel Spacing="8">
+            <Path Width="24" Height="24" Data="{StaticResource Icons.GitHub}" Fill="{DynamicResource Brush.FG2}" HorizontalAlignment="Center"/>
+            <TextBlock Text="GitHub Enterprise Server" TextWrapping="Wrap" TextAlignment="Center"/>
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem Width="96" Padding="4,8" HorizontalContentAlignment="Center">
+          <StackPanel Spacing="8">
+            <Path Width="24" Height="24" Data="{StaticResource Icons.Provider.GitLab}" Fill="{DynamicResource Brush.FG2}" HorizontalAlignment="Center"/>
+            <TextBlock Text="GitLab" TextWrapping="Wrap" TextAlignment="Center"/>
+          </StackPanel>
+        </ListBoxItem>
+        <ListBoxItem Width="96" Padding="4,8" HorizontalContentAlignment="Center">
+          <StackPanel Spacing="8">
+            <Path Width="24" Height="24" Data="{StaticResource Icons.Provider.GitLab}" Fill="{DynamicResource Brush.FG2}" HorizontalAlignment="Center"/>
+            <TextBlock Text="GitLab Server" TextWrapping="Wrap" TextAlignment="Center"/>
+          </StackPanel>
+        </ListBoxItem>
+      </ListBox>
+    </Border>
+
+    <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="16,12">
+      <Button Classes="flat primary" Content="{DynamicResource Text.Accounts.Login}"
+              Click="OnLogin"
+              IsEnabled="{Binding #ProviderList.SelectedItem, Converter={x:Static ObjectConverters.IsNotNull}}"/>
+      <Button Classes="flat" Content="{DynamicResource Text.Cancel}" Click="OnCancel"/>
+    </StackPanel>
+  </Grid>
+</v:ChromelessWindow>

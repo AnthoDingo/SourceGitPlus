@@ -1,13 +1,14 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ResourceDictionary.MergedDictionaries>
-    <ResourceInclude Source="avares://SourceGit/Resources/Locales/en_US.axaml"/>
+    <ResourceInclude Source="avares://SourceGitPlus/Resources/Locales/en_US.axaml"/>
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">Sobre</x:String>
-  <x:String x:Key="Text.About.Menu" xml:space="preserve">Sobre o SourceGit</x:String>
+  <x:String x:Key="Text.About.Menu" xml:space="preserve">Sobre o SourceGitPlus</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">Data de Lançamento</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">Notas de Lançamento</x:String>
   <x:String x:Key="Text.About.SubTitle" xml:space="preserve">Cliente Git GUI Livre e de Código Aberto</x:String>
+  <x:String x:Key="Text.About.ForkOf" xml:space="preserve">Fork of SourceGit</x:String>
   <x:String x:Key="Text.AddToIgnore" xml:space="preserve">Adicionar Arquivo(s) ao Ignore</x:String>
   <x:String x:Key="Text.AddToIgnore.Pattern" xml:space="preserve">Padrão:</x:String>
   <x:String x:Key="Text.AddToIgnore.Storage" xml:space="preserve">Salvar arquivo:</x:String>
@@ -20,7 +21,7 @@
   <x:String x:Key="Text.AIAssistant.Model" xml:space="preserve">Modelo</x:String>
   <x:String x:Key="Text.AIAssistant.Regen" xml:space="preserve">Gerar novamente</x:String>
   <x:String x:Key="Text.AIAssistant.Tip" xml:space="preserve">Utilizar IA para gerar mensagem de commit</x:String>
-  <x:String x:Key="Text.App.Hide" xml:space="preserve">Esconder SourceGit</x:String>
+  <x:String x:Key="Text.App.Hide" xml:space="preserve">Esconder SourceGitPlus</x:String>
   <x:String x:Key="Text.App.ShowAll" xml:space="preserve">Mostrar Todos</x:String>
   <x:String x:Key="Text.Apply.File.Placeholder" xml:space="preserve">Selecione o arquivo patch para aplicar</x:String>
   <x:String x:Key="Text.Apply.IgnoreWS" xml:space="preserve">Ignorar mudanças de espaço em branco</x:String>
@@ -35,7 +36,7 @@
   <x:String x:Key="Text.Archive.File.Placeholder" xml:space="preserve">Selecione o caminho do arquivo de arquivo</x:String>
   <x:String x:Key="Text.Archive.Revision" xml:space="preserve">Revisão:</x:String>
   <x:String x:Key="Text.Archive.Title" xml:space="preserve">Arquivar</x:String>
-  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGit Askpass</x:String>
+  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGitPlus Askpass</x:String>
   <x:String x:Key="Text.Askpass.Passphrase" xml:space="preserve">Entre com a senha</x:String>
   <x:String x:Key="Text.AssumeUnchanged" xml:space="preserve">ARQUIVOS CONSIDERADOS SEM ALTERAÇÕES</x:String>
   <x:String x:Key="Text.AssumeUnchanged.Empty" xml:space="preserve">NENHUM ARQUIVO CONSIDERADO SEM ALTERAÇÕES</x:String>
@@ -163,15 +164,21 @@
   <x:String x:Key="Text.Configure.IssueTracker.URLTemplate.Tip" xml:space="preserve">Por favor, use $1, $2 para acessar os valores de grupos do regex.</x:String>
   <x:String x:Key="Text.Configure.OpenAI" xml:space="preserve">IA</x:String>
   <x:String x:Key="Text.Configure.OpenAI.Preferred" xml:space="preserve">Serviço desejado:</x:String>
-  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">Se o 'Serviço desejado' for definido, SourceGit usará ele neste Repositório. Senão, caso haja mais de um serviço disponível, será exibido um menu para seleção.</x:String>
+  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">Se o 'Serviço desejado' for definido, SourceGitPlus usará ele neste Repositório. Senão, caso haja mais de um serviço disponível, será exibido um menu para seleção.</x:String>
   <x:String x:Key="Text.Configure.Proxy" xml:space="preserve">Proxy HTTP</x:String>
   <x:String x:Key="Text.Configure.Proxy.Placeholder" xml:space="preserve">Proxy HTTP usado por este repositório</x:String>
   <x:String x:Key="Text.Configure.User" xml:space="preserve">Nome de Usuário</x:String>
   <x:String x:Key="Text.Configure.User.Placeholder" xml:space="preserve">Nome de usuário para este repositório</x:String>
   <x:String x:Key="Text.ConfigureWorkspace" xml:space="preserve">Workspaces</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Color" xml:space="preserve">Cor</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Icon" xml:space="preserve">Icon</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Name" xml:space="preserve">Nome</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Restore" xml:space="preserve">Restaurar abas ao inicializar</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git" xml:space="preserve">Git identity (overrides repository settings)</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserName" xml:space="preserve">User name</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserEmail" xml:space="preserve">User email</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SigningKey" xml:space="preserve">GPG signing key ID</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SignCommits" xml:space="preserve">Sign commits with GPG (not set: repository setting)</x:String>
   <x:String x:Key="Text.ConventionalCommit" xml:space="preserve">Assistente de Conventional Commit</x:String>
   <x:String x:Key="Text.ConventionalCommit.BreakingChanges" xml:space="preserve">Breaking Change:</x:String>
   <x:String x:Key="Text.ConventionalCommit.ClosedIssue" xml:space="preserve">Ticket encerrado:</x:String>
@@ -373,6 +380,7 @@
   <x:String x:Key="Text.Name" xml:space="preserve">Nome:</x:String>
   <x:String x:Key="Text.NotConfigured" xml:space="preserve">O Git NÃO foi configurado. Por favor, vá para [Preferências] e configure primeiro.</x:String>
   <x:String x:Key="Text.OpenAppDataDir" xml:space="preserve">Abrir Pasta de Dados do Aplicativo</x:String>
+  <x:String x:Key="Text.OpenShell" xml:space="preserve">Open Shell</x:String>
   <x:String x:Key="Text.OpenInExternalMergeTool" xml:space="preserve">Abrir na Ferramenta de Mesclagem</x:String>
   <x:String x:Key="Text.Optional" xml:space="preserve">Opcional.</x:String>
   <x:String x:Key="Text.PageTabBar.New" xml:space="preserve">Criar Nova Página</x:String>

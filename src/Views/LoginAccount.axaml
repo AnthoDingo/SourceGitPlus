@@ -1,0 +1,58 @@
+<v:ChromelessWindow xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="using:SourceGitPlus.Views"
+                    x:Class="SourceGitPlus.Views.LoginAccount"
+                    x:Name="ThisControl"
+                    Icon="/App.ico"
+                    Width="450" SizeToContent="Height"
+                    CanResize="False"
+                    WindowStartupLocation="CenterOwner">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+    <Grid Grid.Row="0" Height="28" IsVisible="{Binding !#ThisControl.UseSystemWindowFrame}">
+      <Border Background="{DynamicResource Brush.TitleBar}" PointerPressed="BeginMoveWindow"/>
+      <v:CaptionButtons HorizontalAlignment="Right" IsCloseButtonOnly="True" IsVisible="{OnPlatform True, macOS=False}"/>
+    </Grid>
+
+    <StackPanel Grid.Row="1" Orientation="Horizontal" Spacing="12" Margin="24,4,24,12">
+      <Path x:Name="ProviderIcon" Width="24" Height="24" Fill="{DynamicResource Brush.FG2}" VerticalAlignment="Center"/>
+      <TextBlock x:Name="TitleText" FontSize="16" VerticalAlignment="Center"/>
+    </StackPanel>
+
+    <Border Grid.Row="2" Height="1" Margin="24,0" Background="{DynamicResource Brush.Border1}"/>
+
+    <Grid Grid.Row="3" RowDefinitions="Auto,Auto,Auto,Auto" Margin="24,16,24,16">
+      <ComboBox Grid.Row="0" x:Name="MethodBox" Width="320" HorizontalAlignment="Right" Height="28"
+                IsVisible="False" SelectionChanged="OnInputChanged"/>
+
+      <!-- Username form (GitHub) -->
+      <Grid Grid.Row="1" x:Name="UserForm" IsVisible="False" RowDefinitions="Auto,Auto" ColumnDefinitions="Auto,*" Margin="0,8,0,0">
+        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="UserLabel" Text="Username:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="UserBox" Height="28" Watermark="Username" TextChanged="OnInputChanged"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" x:Name="UserTokenLabel" Text="Token:" VerticalAlignment="Center" Margin="0,8,8,0" IsVisible="False"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="UserTokenBox" Height="28" Margin="0,8,0,0" PasswordChar="*" IsVisible="False" TextChanged="OnInputChanged"/>
+      </Grid>
+
+      <!-- Server + personal access token form -->
+      <Grid Grid.Row="1" x:Name="ServerForm" IsVisible="False" RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="Auto,*">
+        <TextBlock x:Name="ServerLabel" Grid.Row="0" Grid.Column="0" Text="Server:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0"/>
+        <TextBox Grid.Row="0" Grid.Column="1" x:Name="ServerBox" Height="28" Watermark="https://code.yourcompany.com" TextChanged="OnInputChanged"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Personal Access Token:" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,8,8,0"/>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="TokenBox" Height="28" Margin="0,8,0,0" PasswordChar="*" TextChanged="OnInputChanged"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="1" Margin="4,6,0,0" Cursor="Hand" PointerPressed="OnManageTokens">
+          <Run Text="Manage" TextDecorations="Underline"/>
+          <Run x:Name="ManageText" Text="personal access tokens" Foreground="{DynamicResource Brush.FG2}"/>
+        </TextBlock>
+      </Grid>
+
+      <SelectableTextBlock Grid.Row="2" x:Name="StatusText" Margin="0,12,0,0" TextWrapping="Wrap" IsVisible="False"/>
+
+      <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8" Margin="0,16,0,0">
+        <Button Classes="flat primary" x:Name="SignInButton" Content="Sign In" IsEnabled="False" Click="OnSignIn"/>
+        <Button Classes="flat" Content="{DynamicResource Text.Cancel}" Click="OnCancel"/>
+      </StackPanel>
+    </Grid>
+  </Grid>
+</v:ChromelessWindow>

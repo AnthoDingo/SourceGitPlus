@@ -1,13 +1,14 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ResourceDictionary.MergedDictionaries>
-    <ResourceInclude Source="avares://SourceGit/Resources/Locales/en_US.axaml"/>
+    <ResourceInclude Source="avares://SourceGitPlus/Resources/Locales/en_US.axaml"/>
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">Info</x:String>
-  <x:String x:Key="Text.About.Menu" xml:space="preserve">Über SourceGit</x:String>
+  <x:String x:Key="Text.About.Menu" xml:space="preserve">Über SourceGitPlus</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">Veröffentlichungsdatum: {0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">Versionshinweise</x:String>
   <x:String x:Key="Text.About.SubTitle" xml:space="preserve">Open Source &amp; freier Git GUI-Client</x:String>
+  <x:String x:Key="Text.About.ForkOf" xml:space="preserve">Fork of SourceGit</x:String>
   <x:String x:Key="Text.AddToIgnore" xml:space="preserve">Zu ignorierende Datei(en) hinzufügen</x:String>
   <x:String x:Key="Text.AddToIgnore.Pattern" xml:space="preserve">Muster:</x:String>
   <x:String x:Key="Text.AddToIgnore.Storage" xml:space="preserve">Speichern in Datei:</x:String>
@@ -21,7 +22,7 @@
   <x:String x:Key="Text.AIAssistant.Regen" xml:space="preserve">NEU GENERIEREN</x:String>
   <x:String x:Key="Text.AIAssistant.Tip" xml:space="preserve">Verwende AI, um Commit-Nachrichten zu generieren</x:String>
   <x:String x:Key="Text.AIAssistant.Use" xml:space="preserve">Übernehmen</x:String>
-  <x:String x:Key="Text.App.Hide" xml:space="preserve">SourceGit minimieren</x:String>
+  <x:String x:Key="Text.App.Hide" xml:space="preserve">SourceGitPlus minimieren</x:String>
   <x:String x:Key="Text.App.HideOthers" xml:space="preserve">Andere ausblenden</x:String>
   <x:String x:Key="Text.App.ShowAll" xml:space="preserve">Alles anzeigen</x:String>
   <x:String x:Key="Text.Apply.3Way" xml:space="preserve">3-Way Merge</x:String>
@@ -41,7 +42,7 @@
   <x:String x:Key="Text.Archive.File.Placeholder" xml:space="preserve">Wähle einen Archivpfad aus</x:String>
   <x:String x:Key="Text.Archive.Revision" xml:space="preserve">Revision:</x:String>
   <x:String x:Key="Text.Archive.Title" xml:space="preserve">Archiv erstellen</x:String>
-  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGit-Askpass</x:String>
+  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGitPlus-Askpass</x:String>
   <x:String x:Key="Text.Askpass.Passphrase" xml:space="preserve">Passphrase eingeben:</x:String>
   <x:String x:Key="Text.AssumeUnchanged" xml:space="preserve">ALS UNVERÄNDERT ANGENOMMENE DATEIEN</x:String>
   <x:String x:Key="Text.AssumeUnchanged.Empty" xml:space="preserve">KEINE ALS UNVERÄNDERT ANGENOMMENEN DATEIEN</x:String>
@@ -288,8 +289,14 @@ $1, $2, … Werte der Eingabe-Steuerelemente</x:String>
   <x:String x:Key="Text.ConfigureCustomActionControls.UseFriendlyName" xml:space="preserve">Kurznamen verwenden:</x:String>
   <x:String x:Key="Text.ConfigureWorkspace" xml:space="preserve">Arbeitsumgebungen</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Color" xml:space="preserve">Farbe</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Icon" xml:space="preserve">Icon</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Name" xml:space="preserve">Name</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Restore" xml:space="preserve">Offene Registerkarten beim Programmstart wiederherstellen</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git" xml:space="preserve">Git identity (overrides repository settings)</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserName" xml:space="preserve">User name</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserEmail" xml:space="preserve">User email</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SigningKey" xml:space="preserve">GPG signing key ID</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SignCommits" xml:space="preserve">Sign commits with GPG (not set: repository setting)</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.Continue" xml:space="preserve">WEITER</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.NoLocalChanges" xml:space="preserve">Leerer Commit erkannt! Möchtest du trotzdem fortfahren (--allow-empty)?</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.StageAllThenCommit" xml:space="preserve">ALLES STAGEN &amp; COMMITTEN</x:String>
@@ -615,6 +622,7 @@ $1, $2, … Werte der Eingabe-Steuerelemente</x:String>
   <x:String x:Key="Text.Open" xml:space="preserve">Öffnen</x:String>
   <x:String x:Key="Text.Open.SystemDefaultEditor" xml:space="preserve">Standard-Texteditor (System)</x:String>
   <x:String x:Key="Text.OpenAppDataDir" xml:space="preserve">Programmdaten-Ordner öffnen</x:String>
+  <x:String x:Key="Text.OpenShell" xml:space="preserve">Open Shell</x:String>
   <x:String x:Key="Text.OpenFile" xml:space="preserve">Datei öffnen</x:String>
   <x:String x:Key="Text.OpenInExternalMergeTool" xml:space="preserve">Öffnen in externem Merge-Tool</x:String>
   <x:String x:Key="Text.OpenLocalRepository" xml:space="preserve">Lokales Repository öffnen</x:String>

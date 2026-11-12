@@ -9,7 +9,7 @@ using Avalonia;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class CommitDetailSharedData
     {

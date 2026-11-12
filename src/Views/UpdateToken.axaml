@@ -1,0 +1,32 @@
+<v:ChromelessWindow xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:v="using:SourceGitPlus.Views"
+                    x:Class="SourceGitPlus.Views.UpdateToken"
+                    x:Name="ThisControl"
+                    Icon="/App.ico"
+                    Title="Update token"
+                    Width="450" SizeToContent="Height"
+                    CanResize="False"
+                    WindowStartupLocation="CenterOwner">
+  <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+    <Grid Grid.Row="0" Height="28" IsVisible="{Binding !#ThisControl.UseSystemWindowFrame}">
+      <Border Background="{DynamicResource Brush.TitleBar}" PointerPressed="BeginMoveWindow"/>
+      <v:CaptionButtons HorizontalAlignment="Right" IsCloseButtonOnly="True" IsVisible="{OnPlatform True, macOS=False}"/>
+    </Grid>
+
+    <TextBlock Grid.Row="1" x:Name="TitleText" FontSize="16" Margin="24,4,24,12"/>
+
+    <Grid Grid.Row="2" ColumnDefinitions="Auto,*" Margin="24,0">
+      <TextBlock x:Name="TokenLabel" Grid.Column="0" Text="Token:" VerticalAlignment="Center" Margin="0,0,8,0"/>
+      <TextBox Grid.Column="1" x:Name="TokenBox" Height="28" PasswordChar="*" TextChanged="OnTokenChanged"/>
+    </Grid>
+
+    <StackPanel Grid.Row="3" Margin="24,12,24,16">
+      <SelectableTextBlock x:Name="StatusText" TextWrapping="Wrap" IsVisible="False" Margin="0,0,0,12"/>
+      <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Spacing="8">
+        <Button Classes="flat primary" x:Name="SaveButton" Content="Update" IsEnabled="False" Click="OnSave"/>
+        <Button Classes="flat" Content="{DynamicResource Text.Cancel}" Click="OnCancel"/>
+      </StackPanel>
+    </StackPanel>
+  </Grid>
+</v:ChromelessWindow>

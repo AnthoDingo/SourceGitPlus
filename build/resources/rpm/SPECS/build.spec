@@ -1,4 +1,4 @@
-Name: sourcegit
+Name: sourcegitplus
 Version: %_version
 Release: 1
 Summary: Open-source & Free Git Gui Client
@@ -16,22 +16,22 @@ Requires: xdg-utils
 Open-source & Free Git Gui Client
 
 %install
-mkdir -p %{buildroot}/opt/sourcegit
+mkdir -p %{buildroot}/opt/sourcegitplus
 mkdir -p %{buildroot}/%{_bindir}
 mkdir -p %{buildroot}/usr/share/applications
 mkdir -p %{buildroot}/usr/share/icons
-cp -f %{_topdir}/../../SourceGit/* %{buildroot}/opt/sourcegit/
-ln -rsf %{buildroot}/opt/sourcegit/sourcegit %{buildroot}/%{_bindir}
+cp -f %{_topdir}/../../SourceGitPlus/* %{buildroot}/opt/sourcegitplus/
+ln -rsf %{buildroot}/opt/sourcegitplus/sourcegitplus %{buildroot}/%{_bindir}
 cp -r %{_topdir}/../_common/applications %{buildroot}/%{_datadir}
 cp -r %{_topdir}/../_common/icons %{buildroot}/%{_datadir}
-chmod 755 %{buildroot}/%{_datadir}/applications/sourcegit.desktop
+chmod 755 %{buildroot}/%{_datadir}/applications/sourcegitplus.desktop
 
 %files
-%dir /opt/sourcegit/
-/opt/sourcegit/*
-/usr/share/applications/sourcegit.desktop
+%dir /opt/sourcegitplus/
+/opt/sourcegitplus/*
+/usr/share/applications/sourcegitplus.desktop
 /usr/share/icons/*
-%{_bindir}/sourcegit
+%{_bindir}/sourcegitplus
 
 %changelog
 # skip

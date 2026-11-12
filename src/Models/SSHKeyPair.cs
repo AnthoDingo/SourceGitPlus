@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public record SSHKeyType(string Name, string Description, string Cmdline)
     {

@@ -1,4 +1,4 @@
-﻿namespace SourceGit.Models
+﻿namespace SourceGitPlus.Models
 {
     public enum InlineElementType
     {

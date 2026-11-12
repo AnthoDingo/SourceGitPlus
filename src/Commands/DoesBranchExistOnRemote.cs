@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SourceGit.Commands
+namespace SourceGitPlus.Commands
 {
     public class DoesBranchExistOnRemote : Command
     {

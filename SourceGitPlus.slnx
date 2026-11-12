@@ -9,11 +9,11 @@
 	</Folder>
 
 	<Folder Name="/build/resources/_common/applications/">
-		<File Path="build/resources/_common/applications/sourcegit.desktop"/>
+		<File Path="build/resources/_common/applications/sourcegitplus.desktop"/>
 	</Folder>
 
 	<Folder Name="/build/resources/_common/icons/">
-		<File Path="build/resources/_common/icons/sourcegit.png"/>
+		<File Path="build/resources/_common/icons/sourcegitplus.png"/>
 	</Folder>
 
 	<Folder Name="/build/resources/_common/">
@@ -27,7 +27,7 @@
 
 	<Folder Name="/build/resources/appimage/">
 		<File Path="build/resources/appimage/sourcegit"/>
-		<File Path="build/resources/appimage/sourcegit.appdata.xml"/>
+		<File Path="build/resources/appimage/sourcegitplus.appdata.xml"/>
 	</Folder>
 
 	<Folder Name="/build/resources/deb/DEBIAN/">
@@ -57,7 +57,7 @@
 	</Folder>
 
 	<Folder Name="/src/">
-		<Project Path="src/SourceGit.csproj" />
+		<Project Path="src/SourceGitPlus.csproj" />
 	</Folder>
 
 	<Folder Name="/files/">

@@ -1,6 +1,6 @@
 using System;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     /// <summary>
     ///     Validates branch and tag names using the same rules that git itself enforces,

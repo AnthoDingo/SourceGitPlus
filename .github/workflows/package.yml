@@ -3,7 +3,7 @@ on:
   workflow_call:
     inputs:
       version:
-        description: SourceGit package version
+        description: SourceGitPlus package version
         required: true
         type: string
 jobs:
@@ -19,23 +19,38 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v8
         with:
-          name: sourcegit.${{ matrix.runtime }}
-          path: build/SourceGit
+          name: sourcegitplus.${{ matrix.runtime }}
+          path: build/SourceGitPlus
       - name: Package
         shell: pwsh
         env:
           VERSION: ${{ inputs.version }}
           RUNTIME: ${{ matrix.runtime }}
         run: ./build/scripts/package.win.ps1
+      - name: Build installer
+        shell: pwsh
+        env:
+          VERSION: ${{ inputs.version }}
+          RUNTIME: ${{ matrix.runtime }}
+        run: |
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (-not (Test-Path $iscc)) {
+            choco install innosetup --no-progress -y
+            if ($LASTEXITCODE) { throw 'Inno Setup installation failed' }
+          }
+          & $iscc "/DAppVersion=$env:VERSION" "/DRuntime=$env:RUNTIME" "/DSourceDir=$PWD\build\SourceGitPlus" "/DOutDir=$PWD\build" build\windows\SourceGitPlus.iss
+          if ($LASTEXITCODE) { throw 'ISCC failed' }
       - name: Upload package artifact
         uses: actions/upload-artifact@v7
         with:
           name: package.${{ matrix.runtime }}
-          path: build/sourcegit_*.zip
+          path: |
+            build/sourcegitplus_*.zip
+            build/SourceGitPlus-*-setup.exe
       - name: Delete temp artifacts
         uses: geekyeggo/delete-artifact@v6
         with:
-          name: sourcegit.${{ matrix.runtime }}
+          name: sourcegitplus.${{ matrix.runtime }}
   osx-app:
     name: Package macOS
     runs-on: macos-latest
@@ -48,25 +63,25 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v8
         with:
-          name: sourcegit.${{ matrix.runtime }}
+          name: sourcegitplus.${{ matrix.runtime }}
           path: build
       - name: Package
         env:
           VERSION: ${{ inputs.version }}
           RUNTIME: ${{ matrix.runtime }}
         run: |
-          mkdir build/SourceGit
-          tar -xf "build/sourcegit.${{ matrix.runtime }}.tar" -C build/SourceGit
+          mkdir build/SourceGitPlus
+          tar -xf "build/sourcegitplus.${{ matrix.runtime }}.tar" -C build/SourceGitPlus
           ./build/scripts/package.osx-app.sh
       - name: Upload package artifact
         uses: actions/upload-artifact@v7
         with:
           name: package.${{ matrix.runtime }}
-          path: build/sourcegit_*.zip
+          path: build/sourcegitplus_*.zip
       - name: Delete temp artifacts
         uses: geekyeggo/delete-artifact@v6
         with:
-          name: sourcegit.${{ matrix.runtime }}
+          name: sourcegitplus.${{ matrix.runtime }}
   linux:
     name: Package Linux
     runs-on: ubuntu-latest
@@ -86,7 +101,7 @@ jobs:
       - name: Download build
         uses: actions/download-artifact@v8
         with:
-          name: sourcegit.${{ matrix.runtime }}
+          name: sourcegitplus.${{ matrix.runtime }}
           path: build
       - name: Package
         env:
@@ -94,19 +109,19 @@ jobs:
           RUNTIME: ${{ matrix.runtime }}
           APPIMAGE_EXTRACT_AND_RUN: 1
         run: |
-          mkdir build/SourceGit
-          tar -xf "build/sourcegit.${{ matrix.runtime }}.tar" -C build/SourceGit
+          mkdir build/SourceGitPlus
+          tar -xf "build/sourcegitplus.${{ matrix.runtime }}.tar" -C build/SourceGitPlus
           ./build/scripts/package.linux.sh
       - name: Upload package artifacts
         uses: actions/upload-artifact@v7
         with:
           name: package.${{ matrix.runtime }}
           path: |
-            build/sourcegit-*.AppImage
-            build/sourcegit-*.AppImage.zsync
-            build/sourcegit_*.deb
-            build/sourcegit-*.rpm
+            build/sourcegitplus-*.AppImage
+            build/sourcegitplus-*.AppImage.zsync
+            build/sourcegitplus_*.deb
+            build/sourcegitplus-*.rpm
       - name: Delete temp artifacts
         uses: geekyeggo/delete-artifact@v6
         with:
-          name: sourcegit.${{ matrix.runtime }}
+          name: sourcegitplus.${{ matrix.runtime }}

@@ -1,13 +1,14 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ResourceDictionary.MergedDictionaries>
-    <ResourceInclude Source="avares://SourceGit/Resources/Locales/en_US.axaml"/>
+    <ResourceInclude Source="avares://SourceGitPlus/Resources/Locales/en_US.axaml"/>
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">關於</x:String>
-  <x:String x:Key="Text.About.Menu" xml:space="preserve">關於 SourceGit</x:String>
+  <x:String x:Key="Text.About.Menu" xml:space="preserve">關於 SourceGitPlus</x:String>
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">發行日期: {0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">版本說明</x:String>
   <x:String x:Key="Text.About.SubTitle" xml:space="preserve">開源免費的 Git 客戶端</x:String>
+  <x:String x:Key="Text.About.ForkOf" xml:space="preserve">Fork of SourceGit</x:String>
   <x:String x:Key="Text.AddToIgnore" xml:space="preserve">新增忽略檔案</x:String>
   <x:String x:Key="Text.AddToIgnore.Pattern" xml:space="preserve">比對模式: </x:String>
   <x:String x:Key="Text.AddToIgnore.Storage" xml:space="preserve">儲存路徑: </x:String>
@@ -21,7 +22,7 @@
   <x:String x:Key="Text.AIAssistant.Regen" xml:space="preserve">重新產生</x:String>
   <x:String x:Key="Text.AIAssistant.Tip" xml:space="preserve">使用 AI 產生提交訊息</x:String>
   <x:String x:Key="Text.AIAssistant.Use" xml:space="preserve">套用</x:String>
-  <x:String x:Key="Text.App.Hide" xml:space="preserve">隱藏 SourceGit</x:String>
+  <x:String x:Key="Text.App.Hide" xml:space="preserve">隱藏 SourceGitPlus</x:String>
   <x:String x:Key="Text.App.HideOthers" xml:space="preserve">隱藏其他</x:String>
   <x:String x:Key="Text.App.ShowAll" xml:space="preserve">顯示全部</x:String>
   <x:String x:Key="Text.Apply.3Way" xml:space="preserve">嘗試三向合併</x:String>
@@ -41,7 +42,7 @@
   <x:String x:Key="Text.Archive.File.Placeholder" xml:space="preserve">選擇封存檔案的儲存路徑</x:String>
   <x:String x:Key="Text.Archive.Revision" xml:space="preserve">指定的提交:</x:String>
   <x:String x:Key="Text.Archive.Title" xml:space="preserve">封存</x:String>
-  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGit Askpass</x:String>
+  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGitPlus Askpass</x:String>
   <x:String x:Key="Text.Askpass.Passphrase" xml:space="preserve">輸入您的密碼:</x:String>
   <x:String x:Key="Text.AssumeUnchanged" xml:space="preserve">不追蹤變更的檔案</x:String>
   <x:String x:Key="Text.AssumeUnchanged.Empty" xml:space="preserve">沒有不追蹤變更的檔案</x:String>
@@ -279,7 +280,7 @@
   <x:String x:Key="Text.Configure.IssueTracker.URLTemplate.Tip" xml:space="preserve">可在網址中使用 $1、$2 等變數填入正規表達式相符的內容</x:String>
   <x:String x:Key="Text.Configure.OpenAI" xml:space="preserve">AI</x:String>
   <x:String x:Key="Text.Configure.OpenAI.Preferred" xml:space="preserve">偏好服務:</x:String>
-  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">設定 [偏好服務] 後，SourceGit 將於此存放庫中使用該服務，否則會顯示 AI 服務列表供使用者選擇。</x:String>
+  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">設定 [偏好服務] 後，SourceGitPlus 將於此存放庫中使用該服務，否則會顯示 AI 服務列表供使用者選擇。</x:String>
   <x:String x:Key="Text.Configure.Proxy" xml:space="preserve">HTTP 代理</x:String>
   <x:String x:Key="Text.Configure.Proxy.Placeholder" xml:space="preserve">HTTP 網路代理</x:String>
   <x:String x:Key="Text.Configure.User" xml:space="preserve">使用者名稱</x:String>
@@ -300,8 +301,14 @@
   <x:String x:Key="Text.ConfigureCustomActionControls.UseFriendlyName" xml:space="preserve">輸出包含遠端的名稱:</x:String>
   <x:String x:Key="Text.ConfigureWorkspace" xml:space="preserve">工作區</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Color" xml:space="preserve">顏色</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Icon" xml:space="preserve">Icon</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Name" xml:space="preserve">名稱</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Restore" xml:space="preserve">啟動時還原上次開啟的存放庫</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git" xml:space="preserve">Git identity (overrides repository settings)</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserName" xml:space="preserve">User name</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserEmail" xml:space="preserve">User email</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SigningKey" xml:space="preserve">GPG signing key ID</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SignCommits" xml:space="preserve">Sign commits with GPG (not set: repository setting)</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.Continue" xml:space="preserve">確認繼續</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.NoLocalChanges" xml:space="preserve">未包含任何檔案變更! 您是否仍要提交 (--allow-empty)?</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.StageAllThenCommit" xml:space="preserve">暫存全部變更並提交</x:String>
@@ -639,6 +646,7 @@
   <x:String x:Key="Text.OpenAppDataDir" xml:space="preserve">瀏覽程式資料目錄</x:String>
   <x:String x:Key="Text.OpenAppDataDir.Cache" xml:space="preserve">快取資料</x:String>
   <x:String x:Key="Text.OpenAppDataDir.Config" xml:space="preserve">偏好設定資料</x:String>
+  <x:String x:Key="Text.OpenShell" xml:space="preserve">Open Shell</x:String>
   <x:String x:Key="Text.OpenFile" xml:space="preserve">開啟檔案</x:String>
   <x:String x:Key="Text.OpenInExternalMergeTool" xml:space="preserve">使用外部比對工具檢視</x:String>
   <x:String x:Key="Text.OpenLocalRepository" xml:space="preserve">開啟本機存放庫</x:String>
@@ -957,7 +965,7 @@
   <x:String x:Key="Text.Statistics.Overview" xml:space="preserve">總覽</x:String>
   <x:String x:Key="Text.Statistics.ThisMonth" xml:space="preserve">本月</x:String>
   <x:String x:Key="Text.Statistics.ThisWeek" xml:space="preserve">本週</x:String>
-  <x:String x:Key="Text.Statistics.Tips" xml:space="preserve">SourceGit 僅會依所選分支取出最多 200,000 筆提交記錄進行分析</x:String>
+  <x:String x:Key="Text.Statistics.Tips" xml:space="preserve">SourceGitPlus 僅會依所選分支取出最多 200,000 筆提交記錄進行分析</x:String>
   <x:String x:Key="Text.Statistics.TopAuthors" xml:space="preserve">主要貢獻者</x:String>
   <x:String x:Key="Text.Statistics.TopAuthors.Count" xml:space="preserve">提交次數</x:String>
   <x:String x:Key="Text.Statistics.TopAuthors.Percentage" xml:space="preserve">百分比</x:String>

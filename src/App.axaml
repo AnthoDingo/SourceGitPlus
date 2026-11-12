@@ -1,8 +1,8 @@
 <Application xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:s="using:SourceGit"
-             x:Class="SourceGit.App"
-             Name="SourceGit"
+             xmlns:s="using:SourceGitPlus"
+             x:Class="SourceGitPlus.App"
+             Name="SourceGitPlus"
              RequestedThemeVariant="Dark">
   <Application.Resources>
     <ResourceDictionary>
@@ -48,6 +48,7 @@
       <NativeMenuItem Header="{DynamicResource Text.Preferences}" Command="{x:Static s:App.OpenPreferencesCommand}" Gesture="⌘+,"/>
       <NativeMenuItem Header="{DynamicResource Text.SSHKeyHelper}" Command="{x:Static s:App.OpenSSHKeyHelperCommand}"/>
       <NativeMenuItem Header="{DynamicResource Text.OpenAppDataDir}" Command="{x:Static s:App.OpenAppDataDirCommand}"/>
+      <NativeMenuItem Header="{DynamicResource Text.OpenShell}" Command="{x:Static s:App.OpenShellCommand}"/>
       <NativeMenuItemSeparator/>
       <NativeMenuItem Header="{DynamicResource Text.App.Hide}" Command="{x:Static s:App.HideAppCommand}" Gesture="⌘+H"/>
       <NativeMenuItem Header="{DynamicResource Text.App.HideOthers}" Command="{x:Static s:App.HideOtherApplicationsCommand}" Gesture="⌘+Alt+H"/>

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SourceGit.Commands
+namespace SourceGitPlus.Commands
 {
     public partial class Command
     {
@@ -161,6 +161,16 @@ namespace SourceGit.Commands
             };
         }
 
+        // Workspace identity overrides. `git config` reads are excluded so the override is never shown
+        // as the repository's own value (and never written back to the repository config).
+        private string GetWorkspaceConfigArgs()
+        {
+            if (string.IsNullOrEmpty(WorkingDirectory) || Args.TrimStart().StartsWith("config", StringComparison.Ordinal))
+                return string.Empty;
+
+            return ViewModels.Preferences.Instance.FindWorkspaceOfRepository(WorkingDirectory)?.GitConfigArgs() ?? string.Empty;
+        }
+
         protected ProcessStartInfo CreateGitStartInfo(bool redirect)
         {
             var useSetSid = CancellationToken.CanBeCanceled && Native.OS.SupportSetSid();
@@ -174,6 +184,8 @@ namespace SourceGit.Commands
                 .Append("--no-pager -c core.quotepath=off -c credential.helper=")
                 .Append(Native.OS.CredentialHelper)
                 .Append(' ');
+
+            builder.Append(GetWorkspaceConfigArgs());
 
             switch (Editor)
             {

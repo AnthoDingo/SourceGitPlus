@@ -2,7 +2,7 @@
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class LFSImageDiff : ObservableObject
     {

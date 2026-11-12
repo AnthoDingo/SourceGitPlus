@@ -9,7 +9,7 @@ using Avalonia.Interactivity;
 using Avalonia.Platform.Storage;
 using Avalonia.VisualTree;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public partial class WorkingCopy : UserControl
     {

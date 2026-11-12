@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace SourceGit.Commands
+namespace SourceGitPlus.Commands
 {
     public static class SaveChangesAsPatch
     {

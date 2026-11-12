@@ -6,7 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.Shapes;
 using Avalonia.Media;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public static class ControlExtensions
     {

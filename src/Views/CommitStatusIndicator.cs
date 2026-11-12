@@ -4,7 +4,7 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public class CommitStatusIndicator : Control
     {

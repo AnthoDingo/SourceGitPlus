@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SourceGit.AI
+namespace SourceGitPlus.AI
 {
     public static class Options
     {

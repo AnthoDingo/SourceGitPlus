@@ -1,6 +1,6 @@
 ﻿using System.Collections.Concurrent;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public class User
     {

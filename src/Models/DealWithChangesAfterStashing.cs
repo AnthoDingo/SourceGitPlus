@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public class DealWithChangesAfterStashing(string label, string desc)
     {

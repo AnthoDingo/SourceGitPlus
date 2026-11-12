@@ -1,6 +1,6 @@
 ﻿using Avalonia.Media;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public class ResetMode(string n, string d, string a, string k, IBrush b)
     {

@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 using Avalonia.Collections;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class Preferences : ObservableObject
     {
@@ -511,6 +511,17 @@ namespace SourceGit.ViewModels
             var first = Workspaces[0];
             first.IsActive = true;
             return first;
+        }
+
+        public Workspace FindWorkspaceOfRepository(string repoPath)
+        {
+            foreach (var w in Workspaces)
+            {
+                if (w.Repositories.Contains(repoPath))
+                    return w;
+            }
+
+            return null;
         }
 
         public void AddNode(RepositoryNode node, RepositoryNode to, bool save)

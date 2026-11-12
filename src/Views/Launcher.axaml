@@ -2,12 +2,12 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                    xmlns:s="using:SourceGit"
-                    xmlns:vm="using:SourceGit.ViewModels"
-                    xmlns:v="using:SourceGit.Views"
-                    xmlns:c="using:SourceGit.Converters"
+                    xmlns:s="using:SourceGitPlus"
+                    xmlns:vm="using:SourceGitPlus.ViewModels"
+                    xmlns:v="using:SourceGitPlus.Views"
+                    xmlns:c="using:SourceGitPlus.Converters"
                     mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-                    x:Class="SourceGit.Views.Launcher"
+                    x:Class="SourceGitPlus.Views.Launcher"
                     x:DataType="vm:Launcher"
                     x:Name="ThisControl"
                     Icon="/App.ico"
@@ -44,6 +44,11 @@
       <Button Grid.Column="0" Classes="icon_button" VerticalAlignment="Bottom" Margin="6,0,0,3" IsVisible="{OnPlatform True, macOS=False}">
         <Button.Flyout>
           <MenuFlyout Placement="BottomEdgeAlignedLeft" VerticalOffset="-6">
+            <MenuItem Header="{DynamicResource Text.Accounts}" Command="{x:Static s:App.OpenAccountsCommand}">
+              <MenuItem.Icon>
+                <Path Width="14" Height="14" Data="{StaticResource Icons.User}"/>
+              </MenuItem.Icon>
+            </MenuItem>
             <MenuItem Header="{DynamicResource Text.Preferences}" Command="{x:Static s:App.OpenPreferencesCommand}" InputGesture="Ctrl+,">
               <MenuItem.Icon>
                 <Path Width="14" Height="14" Data="{StaticResource Icons.Settings}"/>
@@ -71,6 +76,11 @@
 
               <MenuItem Header="{DynamicResource Text.OpenAppDataDir.Config}" Command="{x:Static s:App.OpenAppConfigDirCommand}"/>
               <MenuItem Header="{DynamicResource Text.OpenAppDataDir.Cache}" Command="{x:Static s:App.OpenAppDataDirCommand}"/>
+            </MenuItem>
+            <MenuItem Header="{DynamicResource Text.OpenShell}" Command="{x:Static s:App.OpenShellCommand}">
+              <MenuItem.Icon>
+                <Path Width="14" Height="14" Data="{StaticResource Icons.Terminal}"/>
+              </MenuItem.Icon>
             </MenuItem>
             <MenuItem Header="-"/>
             <MenuItem Header="{DynamicResource Text.SelfUpdate}" Command="{x:Static s:App.CheckForUpdateCommand}" IsVisible="{x:Static s:App.IsCheckForUpdateCommandVisible}">

@@ -1,6 +1,6 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <ResourceDictionary.MergedDictionaries>
-    <ResourceInclude Source="avares://SourceGit/Resources/Locales/en_US.axaml"/>
+    <ResourceInclude Source="avares://SourceGitPlus/Resources/Locales/en_US.axaml"/>
   </ResourceDictionary.MergedDictionaries>
 
   <x:String x:Key="Text.About" xml:space="preserve">关于软件</x:String>
@@ -8,6 +8,7 @@
   <x:String x:Key="Text.About.ReleaseDate" xml:space="preserve">发布日期：{0}</x:String>
   <x:String x:Key="Text.About.ReleaseNotes" xml:space="preserve">浏览版本更新说明</x:String>
   <x:String x:Key="Text.About.SubTitle" xml:space="preserve">开源免费的Git客户端</x:String>
+  <x:String x:Key="Text.About.ForkOf" xml:space="preserve">Fork of SourceGit</x:String>
   <x:String x:Key="Text.AddToIgnore" xml:space="preserve">新增忽略文件</x:String>
   <x:String x:Key="Text.AddToIgnore.Pattern" xml:space="preserve">匹配模式 ：</x:String>
   <x:String x:Key="Text.AddToIgnore.Storage" xml:space="preserve">保存位置 ：</x:String>
@@ -21,7 +22,7 @@
   <x:String x:Key="Text.AIAssistant.Regen" xml:space="preserve">重新生成</x:String>
   <x:String x:Key="Text.AIAssistant.Tip" xml:space="preserve">使用AI助手生成提交信息</x:String>
   <x:String x:Key="Text.AIAssistant.Use" xml:space="preserve">应用</x:String>
-  <x:String x:Key="Text.App.Hide" xml:space="preserve">隐藏 SourceGit</x:String>
+  <x:String x:Key="Text.App.Hide" xml:space="preserve">隐藏 SourceGitPlus</x:String>
   <x:String x:Key="Text.App.HideOthers" xml:space="preserve">隐藏其他</x:String>
   <x:String x:Key="Text.App.ShowAll" xml:space="preserve">显示全部</x:String>
   <x:String x:Key="Text.Apply.3Way" xml:space="preserve">尝试三路合并</x:String>
@@ -43,7 +44,7 @@
   <x:String x:Key="Text.Archive.File.Placeholder" xml:space="preserve">选择存档文件的存放路径</x:String>
   <x:String x:Key="Text.Archive.Revision" xml:space="preserve">指定的提交：</x:String>
   <x:String x:Key="Text.Archive.Title" xml:space="preserve">存档</x:String>
-  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGit Askpass</x:String>
+  <x:String x:Key="Text.Askpass" xml:space="preserve">SourceGitPlus Askpass</x:String>
   <x:String x:Key="Text.Askpass.Passphrase" xml:space="preserve">请输入密码 ：</x:String>
   <x:String x:Key="Text.AssumeUnchanged" xml:space="preserve">不跟踪更改的文件</x:String>
   <x:String x:Key="Text.AssumeUnchanged.Empty" xml:space="preserve">没有不跟踪更改的文件</x:String>
@@ -281,7 +282,7 @@
   <x:String x:Key="Text.Configure.IssueTracker.URLTemplate.Tip" xml:space="preserve">可在URL中使用$1，$2等变量填入正则表达式匹配的内容</x:String>
   <x:String x:Key="Text.Configure.OpenAI" xml:space="preserve">AI</x:String>
   <x:String x:Key="Text.Configure.OpenAI.Preferred" xml:space="preserve">启用特定服务 ：</x:String>
-  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">当【启用特定服务】被设置时，SourceGit将在本仓库中仅使用该服务。否则将弹出可用的AI服务列表供用户选择。</x:String>
+  <x:String x:Key="Text.Configure.OpenAI.Preferred.Tip" xml:space="preserve">当【启用特定服务】被设置时，SourceGitPlus将在本仓库中仅使用该服务。否则将弹出可用的AI服务列表供用户选择。</x:String>
   <x:String x:Key="Text.Configure.Proxy" xml:space="preserve">HTTP代理</x:String>
   <x:String x:Key="Text.Configure.Proxy.Placeholder" xml:space="preserve">HTTP网络代理</x:String>
   <x:String x:Key="Text.Configure.User" xml:space="preserve">用户名</x:String>
@@ -302,8 +303,14 @@
   <x:String x:Key="Text.ConfigureCustomActionControls.UseFriendlyName" xml:space="preserve">输出结果带有远程名:</x:String>
   <x:String x:Key="Text.ConfigureWorkspace" xml:space="preserve">工作区</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Color" xml:space="preserve">颜色</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Icon" xml:space="preserve">Icon</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Name" xml:space="preserve">名称</x:String>
   <x:String x:Key="Text.ConfigureWorkspace.Restore" xml:space="preserve">启动时恢复打开的仓库</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git" xml:space="preserve">Git identity (overrides repository settings)</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserName" xml:space="preserve">User name</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.UserEmail" xml:space="preserve">User email</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SigningKey" xml:space="preserve">GPG signing key ID</x:String>
+  <x:String x:Key="Text.ConfigureWorkspace.Git.SignCommits" xml:space="preserve">Sign commits with GPG (not set: repository setting)</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.Continue" xml:space="preserve">确认继续</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.NoLocalChanges" xml:space="preserve">提交未包含变更文件！是否继续(--allow-empty)？</x:String>
   <x:String x:Key="Text.ConfirmEmptyCommit.StageAllThenCommit" xml:space="preserve">暂存所有变更并提交</x:String>
@@ -649,6 +656,7 @@
   <x:String x:Key="Text.OpenAppDataDir" xml:space="preserve">浏览应用数据目录</x:String>
   <x:String x:Key="Text.OpenAppDataDir.Cache" xml:space="preserve">缓存数据</x:String>
   <x:String x:Key="Text.OpenAppDataDir.Config" xml:space="preserve">偏好设置数据</x:String>
+  <x:String x:Key="Text.OpenShell" xml:space="preserve">Open Shell</x:String>
   <x:String x:Key="Text.OpenFile" xml:space="preserve">打开文件</x:String>
   <x:String x:Key="Text.OpenInExternalMergeTool" xml:space="preserve">使用外部对比工具查看</x:String>
   <x:String x:Key="Text.OpenLocalRepository" xml:space="preserve">打开本地仓库</x:String>
@@ -972,7 +980,7 @@
   <x:String x:Key="Text.Statistics.Overview" xml:space="preserve">总览</x:String>
   <x:String x:Key="Text.Statistics.ThisMonth" xml:space="preserve">本月</x:String>
   <x:String x:Key="Text.Statistics.ThisWeek" xml:space="preserve">本周</x:String>
-  <x:String x:Key="Text.Statistics.Tips" xml:space="preserve">SourceGit 仅会按所选分支最多取出 200000 条提交记录进行分析</x:String>
+  <x:String x:Key="Text.Statistics.Tips" xml:space="preserve">SourceGitPlus 仅会按所选分支最多取出 200000 条提交记录进行分析</x:String>
   <x:String x:Key="Text.Statistics.TopAuthors" xml:space="preserve">主要贡献者</x:String>
   <x:String x:Key="Text.Statistics.TopAuthors.Count" xml:space="preserve">提交数量</x:String>
   <x:String x:Key="Text.Statistics.TopAuthors.Percentage" xml:space="preserve">百分比</x:String>

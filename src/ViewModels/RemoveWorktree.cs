@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SourceGit.ViewModels
+namespace SourceGitPlus.ViewModels
 {
     public class RemoveWorktree : Popup
     {

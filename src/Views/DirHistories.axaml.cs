@@ -2,7 +2,7 @@ using System;
 using Avalonia.Controls;
 using Avalonia.Input;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public partial class DirHistories : ChromelessWindow
     {

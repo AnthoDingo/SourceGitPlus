@@ -8,7 +8,7 @@ using Azure.AI.OpenAI;
 using CommunityToolkit.Mvvm.ComponentModel;
 using OpenAI;
 
-namespace SourceGit.AI
+namespace SourceGitPlus.AI
 {
     public class Service : ObservableObject
     {

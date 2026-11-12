@@ -9,7 +9,7 @@ using Avalonia.Layout;
 using Avalonia.Media;
 using Avalonia.VisualTree;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public class SubmoduleTreeNodeToggleButton : ToggleButton
     {

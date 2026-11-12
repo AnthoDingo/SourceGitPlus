@@ -7,7 +7,7 @@ using System.Text.Json.Serialization;
 using Avalonia.Controls;
 using Avalonia.Media;
 
-namespace SourceGit
+namespace SourceGitPlus
 {
     public class DateTimeConverter : JsonConverter<DateTime>
     {
@@ -68,6 +68,7 @@ namespace SourceGit
     [JsonSerializable(typeof(Models.Version))]
     [JsonSerializable(typeof(Models.RepositorySettings))]
     [JsonSerializable(typeof(Models.RepositoryUIStates))]
+    [JsonSerializable(typeof(List<Models.AccountRecord>))]
     [JsonSerializable(typeof(List<Models.ConventionalCommitType>))]
     [JsonSerializable(typeof(List<Models.LFSLock>))]
     [JsonSerializable(typeof(List<Models.VisualStudioInstance>))]

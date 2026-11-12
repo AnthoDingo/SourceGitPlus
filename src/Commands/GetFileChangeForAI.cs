@@ -2,7 +2,7 @@
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SourceGit.Commands
+namespace SourceGitPlus.Commands
 {
     public class GetFileChangeForAI : Command
     {

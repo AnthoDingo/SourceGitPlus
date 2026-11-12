@@ -1,6 +1,12 @@
 name: Build
 on:
   workflow_call:
+    inputs:
+      version:
+        description: Version to build. Overrides the VERSION file when set (release tags).
+        required: false
+        type: string
+        default: ''
 jobs:
   build:
     strategy:
@@ -61,21 +67,27 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y llvm gcc-aarch64-linux-gnu
+      - name: Set version from tag
+        if: inputs.version != ''
+        shell: bash
+        env:
+          VERSION: ${{ inputs.version }}
+        run: printf '%s' "$VERSION" > VERSION
       - name: Build
         run: dotnet build -c Release
       - name: Publish
-        run: dotnet publish src/SourceGit.csproj -c Release -o publish -r ${{ matrix.runtime }}
+        run: dotnet publish src/SourceGitPlus.csproj -c Release -o publish -r ${{ matrix.runtime }}
       - name: Rename executable file
         if: startsWith(matrix.runtime, 'linux-')
-        run: mv publish/SourceGit publish/sourcegit
+        run: mv publish/SourceGitPlus publish/sourcegitplus
       - name: Tar artifact
         if: startsWith(matrix.runtime, 'linux-') || startsWith(matrix.runtime, 'osx-')
         run: |
-          tar -cvf "sourcegit.${{ matrix.runtime }}.tar" -C publish .
+          tar -cvf "sourcegitplus.${{ matrix.runtime }}.tar" -C publish .
           rm -r publish/*
-          mv "sourcegit.${{ matrix.runtime }}.tar" publish
+          mv "sourcegitplus.${{ matrix.runtime }}.tar" publish
       - name: Upload artifact
         uses: actions/upload-artifact@v7
         with:
-          name: sourcegit.${{ matrix.runtime }}
+          name: sourcegitplus.${{ matrix.runtime }}
           path: publish/*

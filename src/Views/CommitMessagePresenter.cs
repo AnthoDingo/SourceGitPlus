@@ -9,7 +9,7 @@ using Avalonia.Input;
 using Avalonia.Threading;
 using Avalonia.VisualTree;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public class CommitMessagePresenter : SelectableTextBlock
     {

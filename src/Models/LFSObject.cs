@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace SourceGit.Models
+namespace SourceGitPlus.Models
 {
     public partial class LFSObject
     {

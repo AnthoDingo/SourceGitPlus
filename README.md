@@ -1,4 +1,4 @@
-# SourceGit - Opensource Git GUI client.
+# SourceGitPlus - Opensource Git GUI client.
 
 [![stars](https://img.shields.io/github/stars/sourcegit-scm/sourcegit.svg)](https://github.com/sourcegit-scm/sourcegit/stargazers)
 [![forks](https://img.shields.io/github/forks/sourcegit-scm/sourcegit.svg)](https://github.com/sourcegit-scm/sourcegit/forks)
@@ -80,7 +80,7 @@ This software creates a folder, which is platform-dependent, to store user setti
 
 > [!TIP]
 > * You can open this data storage directory from the main menu `Open Data Storage Directory`.
-> * You can create a `data` folder next to the `SourceGit` executable to force this app to store data (user settings, downloaded avatars and crash logs) into it (Portable-Mode). Only works with Windows packages and Linux AppImages.
+> * You can create a `data` folder next to the `SourceGitPlus` executable to force this app to store data (user settings, downloaded avatars and crash logs) into it (Portable-Mode). Only works with Windows packages and Linux AppImages.
 
 For **Windows** users:
 
@@ -100,19 +100,19 @@ For **Windows** users:
 
 For **macOS** users:
 
-* Thanks [@ybeapps](https://github.com/ybeapps) for making `SourceGit` available on `Homebrew`:
+* Thanks [@ybeapps](https://github.com/ybeapps) for making `SourceGitPlus` available on `Homebrew`:
   ```shell
   brew install --cask sourcegit
   ```
-* If you want to install `SourceGit.app` from GitHub Release manually, you need run following command to make sure it works:
+* If you want to install `SourceGitPlus.app` from GitHub Release manually, you need run following command to make sure it works:
   ```shell
-  sudo xattr -cr /Applications/SourceGit.app
+  sudo xattr -cr /Applications/SourceGitPlus.app
   ```
 > [!NOTE]
-> macOS packages in the `Release` page of this project are all unsigned. If you are worried about potential security issues with the above command, you can download the signed package from the [distribution repository](https://github.com/ybeapps/homebrew-sourcegit/releases) provided by [@ybeapps](https://github.com/ybeapps) (there is no need to execute the above command while installing `SourceGit`).
+> macOS packages in the `Release` page of this project are all unsigned. If you are worried about potential security issues with the above command, you can download the signed package from the [distribution repository](https://github.com/ybeapps/homebrew-sourcegit/releases) provided by [@ybeapps](https://github.com/ybeapps) (there is no need to execute the above command while installing `SourceGitPlus`).
 
 * Make sure [git-credential-manager](https://github.com/git-ecosystem/git-credential-manager/releases) is installed on your mac.
-* You can run `echo $PATH > ~/Library/Application\ Support/SourceGit/PATH` to generate a custom PATH env file to introduce `PATH` env to SourceGit.
+* You can run `echo $PATH > ~/Library/Application\ Support/SourceGit/PATH` to generate a custom PATH env file to introduce `PATH` env to SourceGitPlus.
 
 For **Linux** users:
 
@@ -149,19 +149,19 @@ For **Linux** users:
 > [!NOTE]
 > RISC-V support is untested.
 
-* `AppImage` files can be found on [AppImage hub](https://appimage.github.io/SourceGit/), `xdg-open` (`xdg-utils`) must be installed to support open native file manager.
+* `AppImage` files can be found on [AppImage hub](https://appimage.github.io/SourceGitPlus/), `xdg-open` (`xdg-utils`) must be installed to support open native file manager.
 * Make sure [git-credential-manager](https://github.com/git-ecosystem/git-credential-manager/releases) or [git-credential-libsecret](https://pkgs.org/search/?q=git-credential-libsecret) is installed on your Linux.
 * Maybe you need to set environment variable `AVALONIA_SCREEN_SCALE_FACTORS`. See https://github.com/AvaloniaUI/Avalonia/wiki/Configuring-X11-per-monitor-DPI.
 * If you can NOT type accented characters, such as `ê`, `ó`, try to set the environment variable `AVALONIA_IM_MODULE` to `none`.
 
 ## Commandline arguments
 
-Users can also launcher `SourceGit` from commandline. Usage:
+Users can also launcher `SourceGitPlus` from commandline. Usage:
 
 ```
-<SOURCEGIT_EXEC> <DIR>                       // Open repository in existing `SourceGit` instance or a new one
-<SOURCEGIT_EXEC> --history <FILE_OR_DIR>     // Launch `SourceGit` to see the history of a file or dir
-<SOURCEGIT_EXEC> --blame <FILE_PATH>         // Launch `SourceGit` to blame a file (HEAD version only) 
+<SOURCEGIT_EXEC> <DIR>                       // Open repository in existing `SourceGitPlus` instance or a new one
+<SOURCEGIT_EXEC> --history <FILE_OR_DIR>     // Launch `SourceGitPlus` to see the history of a file or dir
+<SOURCEGIT_EXEC> --blame <FILE_PATH>         // Launch `SourceGitPlus` to blame a file (HEAD version only) 
 ```
 
 ## OpenAI
@@ -271,7 +271,7 @@ In short, here are the commands to get started once [.NET tools are installed](h
 dotnet nuget add source https://api.nuget.org/v3/index.json -n nuget.org
 dotnet restore
 dotnet build
-dotnet run --project src/SourceGit.csproj
+dotnet run --project src/SourceGitPlus.csproj
 ```
 
 Thanks to all the people who contribute.

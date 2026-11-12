@@ -3,10 +3,12 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Avalonia.Interactivity;
 
-namespace SourceGit.Views
+namespace SourceGitPlus.Views
 {
     public partial class About : ChromelessWindow
     {
+        private const string REPO_URL = "https://github.com/AnthoDingo/SourceGitPlus";
+
         public About()
         {
             CloseOnESC = true;
@@ -47,17 +49,30 @@ namespace SourceGit.Views
             if (endOfTagIdx > 0)
                 ver = ver.Substring(0, endOfTagIdx);
 
-            Native.OS.OpenBrowser($"https://github.com/sourcegit-scm/sourcegit/releases/tag/{ver}");
+            Native.OS.OpenBrowser($"{REPO_URL}/releases/tag/{ver}");
             e.Handled = true;
         }
 
         private void OnVisitWebsite(object _, RoutedEventArgs e)
         {
-            Native.OS.OpenBrowser("https://sourcegit-scm.github.io/");
+            Native.OS.OpenBrowser(REPO_URL);
             e.Handled = true;
         }
 
         private void OnVisitSourceCode(object _, RoutedEventArgs e)
+        {
+            Native.OS.OpenBrowser(REPO_URL);
+            e.Handled = true;
+        }
+
+        // Upstream project this fork is based on.
+        private void OnVisitUpstreamWebsite(object _, RoutedEventArgs e)
+        {
+            Native.OS.OpenBrowser("https://sourcegit-scm.github.io/");
+            e.Handled = true;
+        }
+
+        private void OnVisitUpstreamSourceCode(object _, RoutedEventArgs e)
         {
             Native.OS.OpenBrowser("https://github.com/sourcegit-scm/sourcegit");
             e.Handled = true;
