@@ -37,7 +37,8 @@ namespace SourceGitPlus.Commands
         public bool RaiseError { get; set; } = true;
         public Models.ICommandLog Log { get; set; } = null;
 
-        // When set, the command is refused before running git (e.g. push to a read-only remote).
+        // When set, the command is skipped before running git (e.g. push to a read-only remote).
+        // The reason goes to the log only: it is an intended skip, not an error to show.
         public string BlockedReason { get; set; } = null;
 
         public async Task<bool> ExecAsync()
@@ -45,8 +46,6 @@ namespace SourceGitPlus.Commands
             if (!string.IsNullOrEmpty(BlockedReason))
             {
                 Log?.AppendLine(BlockedReason);
-                if (RaiseError)
-                    RaiseException(BlockedReason);
                 return false;
             }
 
